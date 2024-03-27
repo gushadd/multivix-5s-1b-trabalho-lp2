@@ -11,7 +11,7 @@ public class Contato
         set
         {
             if (value == null) throw new ArgumentNullException("CPF não pode ser nulo");
-            if (value.Length != 11) throw new ArgumentException("CPF deve ter exatamente 11 caracteres");
+            if (value.Length != 11) throw new ArgumentOutOfRangeException("CPF deve ter exatamente 11 caracteres");
             if (!Regex.IsMatch(value, "^[0-9]+$")) throw new ArgumentException("CPF deve conter apenas números");
             cpf = value;
         }    
@@ -36,7 +36,7 @@ public class Contato
         set
         {
             if (value == null) throw new ArgumentNullException("Telefone não pode ser nulo");
-            if (value.Length != 11) throw new ArgumentException("Telefone deve ter exatamente 11 caracteres");
+            if (value.Length != 11) throw new ArgumentOutOfRangeException("Telefone deve ter exatamente 11 caracteres");
             if (!Regex.IsMatch(value, @"^[0-9]+$")) throw new ArgumentException("Telefone deve conter apenas números");
             telefone = value;
         }
