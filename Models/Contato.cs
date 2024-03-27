@@ -35,6 +35,7 @@ public class Contato
         get { return telefone; }
         set
         {
+            if (value == null) throw new ArgumentNullException("Telefone não pode ser nulo");
             if (value.Length != 11) throw new ArgumentException("Telefone deve ter exatamente 11 caracteres");
             if (!Regex.IsMatch(value, @"^[0-9]+$")) throw new ArgumentException("Telefone deve conter apenas números");
             telefone = value;
@@ -47,6 +48,7 @@ public class Contato
         get { return email; }
         set
         {
+            if (value == null) throw new ArgumentNullException("Email não pode ser nulo");
             if (!Regex.IsMatch(value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$")) throw new ArgumentException("O email deve possuir o formato exemplo@dominio.com");
             email = value;
         }
