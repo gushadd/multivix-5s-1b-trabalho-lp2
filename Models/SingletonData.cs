@@ -8,6 +8,8 @@ public sealed class SingletonData
     //garantindo que apenas uma thread por vez possa executar a seção crítica do código.
     private static readonly object lockObject = new();
 
+    private List<Evento> Eventos;
+
     private SingletonData() 
     {
         if (Eventos == null)
@@ -28,8 +30,6 @@ public sealed class SingletonData
         return _instanciaGlobal;
     }
 
-    private List<Evento> Eventos;
-
     public void AdicionarEvento(Evento evento)
     {
         Eventos.Add(evento);
@@ -43,7 +43,6 @@ public sealed class SingletonData
             {
                 Eventos.Remove(evento);
             }
-
         }
     }
 }
