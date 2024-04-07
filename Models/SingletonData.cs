@@ -18,7 +18,7 @@ public sealed class SingletonData
         }
     }
 
-    public static SingletonData GetInstance()
+    public static SingletonData GetInstancia()
     {
         lock (lockObject)
         {
@@ -44,5 +44,11 @@ public sealed class SingletonData
                 Eventos.Remove(evento);
             }
         }
+    }
+  
+    public List<Evento> ObterEventos()
+    {
+        // Retorna uma cópia da lista original
+        return new List<Evento>(Eventos);
     }
 }
