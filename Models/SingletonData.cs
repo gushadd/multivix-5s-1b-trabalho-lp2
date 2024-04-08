@@ -30,6 +30,21 @@ public sealed class SingletonData
         return _instanciaGlobal;
     }
 
+    public Evento GetEvento(String idEvento)
+    {
+        Evento evento = null;
+        foreach (var e in Eventos)
+        {
+            if (idEvento.Equals(e.Id))
+            {
+                evento = e;
+            }
+            break;
+        }
+
+        return evento == null ? throw new Exception ("Nenhum evento encontrado com o id fornecido") : evento;
+    }
+
     public void AdicionarEvento(Evento evento)
     {
         Eventos.Add(evento);
@@ -44,6 +59,15 @@ public sealed class SingletonData
                 Eventos.Remove(evento);
             }
         }
+    }
+
+    public void EditarEvento(String idEvento, String titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, String descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, String publicoAlvo)
+    {
+
+    }
+
+    public void EditarContatoEvento(String idEvento)
+    {
     }
   
     public List<Evento> ObterEventos()
