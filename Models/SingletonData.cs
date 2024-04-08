@@ -18,7 +18,7 @@ public sealed class SingletonData
         }
     }
 
-    public static SingletonData GetInstance()
+    public static SingletonData GetInstancia()
     {
         lock (lockObject)
         {
@@ -68,6 +68,11 @@ public sealed class SingletonData
 
     public void EditarContatoEvento(String idEvento)
     {
-
+    }
+  
+    public List<Evento> ObterEventos()
+    {
+        // Retorna uma cópia da lista original
+        return new List<Evento>(Eventos);
     }
 }
