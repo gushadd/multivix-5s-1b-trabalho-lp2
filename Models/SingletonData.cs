@@ -8,13 +8,13 @@ public sealed class SingletonData
     //garantindo que apenas uma thread por vez possa executar a seção crítica do código.
     private static readonly object lockObject = new();
 
-    private List<Evento> Eventos;
+    private List<Evento> eventos;
 
     private SingletonData() 
     {
-        if (Eventos == null)
+        if (eventos == null)
         {
-            Eventos = new();
+            eventos = new();
         }
     }
 
@@ -33,7 +33,7 @@ public sealed class SingletonData
     public Evento GetEvento(String idEvento)
     {
         Evento evento = null;
-        foreach (var e in Eventos)
+        foreach (var e in eventos)
         {
             if (idEvento.Equals(e.Id))
             {
@@ -47,32 +47,95 @@ public sealed class SingletonData
 
     public void AdicionarEvento(Evento evento)
     {
-        Eventos.Add(evento);
+        eventos.Add(evento);
     }
 
     public void ExcluirEventoPorId(String idEvento)
     {
-        foreach (var evento in Eventos)
+        foreach (var evento in eventos)
         {
             if (idEvento.Equals(evento.Id))
             {
-                Eventos.Remove(evento);
+                eventos.Remove(evento);
             }
         }
     }
 
-    public void EditarEvento(String idEvento, String titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, String descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, String publicoAlvo)
-    {
+    //public void EditarEvento(String idEvento, String titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, String descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, String publicoAlvo)
+    //{
 
+    //}
+
+    // 'novasInformacoes' é um Dictionary, cuja 'key' armazena o nome da informação a ser editada (Descrição, Data etc.) e 
+    // 'value' armazena o novo valor dessa informação
+    public void EditarEvento(string idEvento, Dictionary<string, string> novasInformacoes)
+    {
+        int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
+        if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
+
+        foreach(var novaInformacao in novasInformacoes)
+        {
+            switch (novaInformacao.Key)
+            {
+                case "Titulo":
+                    eventos[indiceEvento].Titulo = novaInformacao.Value;
+                    break;
+
+                case "Data Inicial":
+                    eventos[indiceEvento].DataHoraInicio = DateTime.Parse(novaInformacao.Value);
+                    break;
+
+                case "Data Final":
+                    eventos[indiceEvento].DataHoraFinal = DateTime.Parse(novaInformacao.Value);
+                    break;
+
+                case "Descricao":
+                    eventos[indiceEvento].Descricao = novaInformacao.Value;
+                    break;
+
+                case "Qtd Aprox Pessoas":
+                    eventos[indiceEvento].QuantidadeAproximadaPessoas = Convert.ToInt32(novaInformacao.Value);
+                    break;
+
+                case "Qtd Prevista Pessoas":
+                    eventos[indiceEvento].QuantidadePrevistaPessoas = Convert.ToInt32(novaInformacao.Value);
+                    break;
+
+                case "Público Alvo":
+                    eventos[indiceEvento].PublicoAlvo = novaInformacao.Value;
+                    break;               
+            }
+        }
     }
 
-    public void EditarContatoEvento(String idEvento)
+    public void EditarContatoEvento(string idEvento, Dictionary<string, string> novasInformacoes)
     {
+        int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
+        if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
+
+        foreach(var novaInformacao in novasInformacoes)
+        {
+            switch(novaInformacao.Key)
+            {
+                case "Cpf":
+                    eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
+                    break;
+                case "Nome":
+                    eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
+                    break;
+                case "Telefone":
+                    eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
+                    break;
+                case "Email":
+                    eventos[indiceEvento].Contato.Email = novaInformacao.Value;
+                    break;
+            }
+        }
     }
   
     public List<Evento> ObterEventos()
     {
         // Retorna uma cópia da lista original
-        return new List<Evento>(Eventos);
+        return new List<Evento>(eventos);
     }
 }

@@ -5,6 +5,20 @@ namespace Gestor_de_Eventos.Models;
 
 public class Evento
 {
+    public Evento(string id, string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
+        string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
+    {
+        Id = id;
+        Titulo = titulo;
+        DataHoraInicio = dataHoraInicio;
+        DataHoraFinal = dataHoraFinal;
+        Descricao = descricao;
+        QuantidadeAproximadaPessoas = quantidadeAproximadaPessoas;
+        QuantidadePrevistaPessoas = quantidadePrevistaPessoas;
+        PublicoAlvo = publicoAlvo;
+        Contato = contato;
+    }
+
     private string? id;
     public string? Id 
     {
