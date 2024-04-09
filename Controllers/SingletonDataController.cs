@@ -1,5 +1,4 @@
 ﻿using Gestor_de_Eventos.Models;
-using System.Drawing;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -38,6 +37,19 @@ public class SingletonDataController
 
             return "Evento adicionado com sucesso!";
         } 
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+    public string ExcluirEventoPorId(string id)
+    {
+        try
+        {
+            singletonData.ExcluirEventoPorId(id);
+            return "Evento excluido com sucesso!";
+        }
         catch (Exception ex)
         {
             return ex.Message;

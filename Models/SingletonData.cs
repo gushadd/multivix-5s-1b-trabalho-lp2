@@ -30,16 +30,16 @@ public sealed class SingletonData
         return _instanciaGlobal;
     }
 
-    public Evento GetEvento(String idEvento)
+    public Evento GetEvento(string id)
     {
-        Evento evento = null;
+        Evento? evento = null;
         foreach (var e in eventos)
         {
-            if (idEvento.Equals(e.Id))
+            if (id.Equals(e.Id))
             {
                 evento = e;
+                break;
             }
-            break;
         }
 
         return evento == null ? throw new Exception ("Nenhum evento encontrado com o id fornecido") : evento;
@@ -50,20 +50,20 @@ public sealed class SingletonData
         eventos.Add(evento);
     }
 
-    public void ExcluirEventoPorId(String idEvento)
+    public void ExcluirEventoPorId(string id)
     {
-        foreach (var evento in eventos)
-        {
-            if (idEvento.Equals(evento.Id))
-            {
-                eventos.Remove(evento);
-            }
-        }
+        eventos.Remove(GetEvento(id));
     }
 
-    //public void EditarEvento(String idEvento, String titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, String descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, String publicoAlvo)
+    //public void ExcluirEventoPorId(String idEvento)
     //{
-
+    //    foreach (var evento in eventos)
+    //    {
+    //        if (idEvento.Equals(evento.Id))
+    //        {
+    //            eventos.Remove(evento);
+    //        }
+    //    }
     //}
 
     // 'novasInformacoes' é um Dictionary, cuja 'key' armazena o nome da informação a ser editada (Descrição, Data etc.) e 
