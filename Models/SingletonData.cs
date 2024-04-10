@@ -18,6 +18,9 @@ public sealed class SingletonData
         }
     }
 
+    /// <summary>
+    /// Retorna uma instancia uma intancia global para a camada de dados
+    /// </summary>
     public static SingletonData GetInstancia()
     {
         lock (lockObject)
@@ -30,6 +33,9 @@ public sealed class SingletonData
         return _instanciaGlobal;
     }
 
+    /// <summary>
+    /// Retorna um evento a partir de um id de evento.
+    /// </summary>
     public Evento GetEvento(string id)
     {
         Evento? evento = null;
@@ -45,11 +51,17 @@ public sealed class SingletonData
         return evento == null ? throw new Exception ("Nenhum evento encontrado com o id fornecido") : evento;
     }
 
+    /// <summary>
+    /// Adiciona um evento na lista de eventos.
+    /// </summary>
     public void AdicionarEvento(Evento evento)
     {
         eventos.Add(evento);
     }
 
+    /// <summary>
+    /// Exclui um evento da lista de eventos a partir de um id de evento.
+    /// </summary>
     public void ExcluirEventoPorId(string id)
     {
         eventos.Remove(GetEvento(id));
@@ -143,7 +155,10 @@ public sealed class SingletonData
             }
         }
     }
-  
+
+    /// <summary>
+    /// Retorna uma cópia da lista de eventos original
+    /// </summary>
     public List<Evento> ObterEventos()
     {
         // Retorna uma cópia da lista original
