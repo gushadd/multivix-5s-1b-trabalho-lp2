@@ -67,7 +67,6 @@ public sealed class SingletonData
     /// <item><description>5 = Quantidade Aproximada de Pessoas</description></item>
     /// <item><description>6 = Quantidade Prevista de Pessoas</description></item>
     /// <item><description>7 = Público Alvo</description></item>
-    /// <item><description>8 = Contato</description></item>
     /// </list>
     /// </summary>
     public void EditarEvento(string idEvento, Dictionary<int, string> novasInformacoes)
@@ -106,39 +105,43 @@ public sealed class SingletonData
                 case 7:
                     eventos[indiceEvento].PublicoAlvo = novaInformacao.Value;
                     break;
-
-                case 8:
-                    EditarContatoEvento(indiceEvento);
-                    break;
             }
         }
     }
 
-    public void EditarContatoEvento(int indiceEventoNaLista)
+    /// <summary>
+    /// Edita as informações do contato de um evento. Segue a lista de opções para cada valor:
+    /// <list type="bullet">
+    /// <item><description>1 = CPF</description></item>
+    /// <item><description>2 = Nome</description></item>
+    /// <item><description>3 = Telefone</description></item>
+    /// <item><description>4 = Email</description></item>
+    /// </list>
+    /// </summary>
+    public void EditarContatoEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
-        //Implementar Lógica puxando pelo indice do evento na lista
 
-        //int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
-        //if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
+        int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
+        if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
 
-        //foreach(var novaInformacao in novasInformacoes)
-        //{
-        //    switch(novaInformacao.Key)
-        //    {
-        //        case "Cpf":
-        //            eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
-        //            break;
-        //        case "Nome":
-        //            eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
-        //            break;
-        //        case "Telefone":
-        //            eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
-        //            break;
-        //        case "Email":
-        //            eventos[indiceEvento].Contato.Email = novaInformacao.Value;
-        //            break;
-        //    }
-        //}
+        foreach(var novaInformacao in novasInformacoes)
+        {
+            switch(novaInformacao.Key)
+            {
+                case 1:
+                    eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
+                    break;
+                case 2:
+                    eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
+                    break;
+                case 3:
+                    eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
+                    break;
+                case 4:
+                    eventos[indiceEvento].Contato.Email = novaInformacao.Value;
+                    break;
+            }
+        }
     }
   
     public List<Evento> ObterEventos()
