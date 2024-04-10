@@ -55,20 +55,22 @@ public sealed class SingletonData
         eventos.Remove(GetEvento(id));
     }
 
-    //public void ExcluirEventoPorId(String idEvento)
-    //{
-    //    foreach (var evento in eventos)
-    //    {
-    //        if (idEvento.Equals(evento.Id))
-    //        {
-    //            eventos.Remove(evento);
-    //        }
-    //    }
-    //}
-
     // 'novasInformacoes' é um Dictionary, cuja 'key' armazena o nome da informação a ser editada (Descrição, Data etc.) e 
     // 'value' armazena o novo valor dessa informação
-    public void EditarEvento(string idEvento, Dictionary<string, string> novasInformacoes)
+    /// <summary>
+    /// Edita as informações de um evento. Segue a lista de opções para cada valor:
+    /// <list type="bullet">
+    /// <item><description>1 = Título</description></item>
+    /// <item><description>2 = Data Inicial</description></item>
+    /// <item><description>3 = Data Final</description></item>
+    /// <item><description>4 = Descrição</description></item>
+    /// <item><description>5 = Quantidade Aproximada de Pessoas</description></item>
+    /// <item><description>6 = Quantidade Prevista de Pessoas</description></item>
+    /// <item><description>7 = Público Alvo</description></item>
+    /// <item><description>8 = Contato</description></item>
+    /// </list>
+    /// </summary>
+    public void EditarEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
         if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
@@ -77,60 +79,66 @@ public sealed class SingletonData
         {
             switch (novaInformacao.Key)
             {
-                case "Titulo":
+                case 1:
                     eventos[indiceEvento].Titulo = novaInformacao.Value;
                     break;
 
-                case "Data Inicial":
+                case 2:
                     eventos[indiceEvento].DataHoraInicio = DateTime.Parse(novaInformacao.Value);
                     break;
 
-                case "Data Final":
+                case 3:
                     eventos[indiceEvento].DataHoraFinal = DateTime.Parse(novaInformacao.Value);
                     break;
 
-                case "Descricao":
+                case 4:
                     eventos[indiceEvento].Descricao = novaInformacao.Value;
                     break;
 
-                case "Qtd Aprox Pessoas":
+                case 5:
                     eventos[indiceEvento].QuantidadeAproximadaPessoas = Convert.ToInt32(novaInformacao.Value);
                     break;
 
-                case "Qtd Prevista Pessoas":
+                case 6:
                     eventos[indiceEvento].QuantidadePrevistaPessoas = Convert.ToInt32(novaInformacao.Value);
                     break;
 
-                case "Público Alvo":
+                case 7:
                     eventos[indiceEvento].PublicoAlvo = novaInformacao.Value;
-                    break;               
+                    break;
+
+                case 8:
+                    EditarContatoEvento(indiceEvento);
+                    break;
             }
         }
     }
 
-    public void EditarContatoEvento(string idEvento, Dictionary<string, string> novasInformacoes)
+    public void EditarContatoEvento(int indiceEventoNaLista)
     {
-        int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
-        if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
+        //Implementar Lógica puxando pelo indice do evento na lista
 
-        foreach(var novaInformacao in novasInformacoes)
-        {
-            switch(novaInformacao.Key)
-            {
-                case "Cpf":
-                    eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
-                    break;
-                case "Nome":
-                    eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
-                    break;
-                case "Telefone":
-                    eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
-                    break;
-                case "Email":
-                    eventos[indiceEvento].Contato.Email = novaInformacao.Value;
-                    break;
-            }
-        }
+        //int indiceEvento = eventos.FindIndex(e => e.Id == idEvento);
+        //if (indiceEvento == -1) throw new ArgumentException("Evento não encontrado");
+
+        //foreach(var novaInformacao in novasInformacoes)
+        //{
+        //    switch(novaInformacao.Key)
+        //    {
+        //        case "Cpf":
+        //            eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
+        //            break;
+        //        case "Nome":
+        //            eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
+        //            break;
+        //        case "Telefone":
+        //            eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
+        //            break;
+        //        case "Email":
+        //            eventos[indiceEvento].Contato.Email = novaInformacao.Value;
+        //            break;
+        //    }
+        //}
     }
   
     public List<Evento> ObterEventos()
