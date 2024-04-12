@@ -7,12 +7,11 @@ public class SingletonDataController
     private static SingletonDataController? _instanciaGlobal;
     private static readonly object lockObject = new();
 
-    private SingletonData singletonData = SingletonData.GetInstancia();
-    private List<Evento> listaDeEventos;
+    private SingletonData singletonData;
     
-    public SingletonDataController()
+    private SingletonDataController()
     {
-        listaDeEventos = singletonData.ObterEventos();
+        singletonData = SingletonData.GetInstancia();
     }
 
     public static SingletonDataController GetInstancia()
@@ -61,7 +60,7 @@ public class SingletonDataController
     {       
         List<Evento> eventosNoPeriodo = new();
 
-        foreach (Evento evento in listaDeEventos)
+        foreach (Evento evento in singletonData.ObterEventos())
         {
             if (evento.DataHoraInicio.Date >= dataInicial && evento.DataHoraFinal.Date <= dataFinal)
             {
@@ -76,7 +75,7 @@ public class SingletonDataController
     {
         List<Evento> eventosNaData = new();
 
-        foreach (Evento evento in listaDeEventos)
+        foreach (Evento evento in singletonData.ObterEventos())
         {
             if (evento.DataHoraInicio.Date == data.Date)
             {
@@ -86,7 +85,7 @@ public class SingletonDataController
         return eventosNaData;
     }
 
-    public string EditarEvento(string idEvento, Dictionary<string, string> novasInformacoes)
+    public string EditarEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         try
         {
@@ -99,7 +98,7 @@ public class SingletonDataController
         }
     }
 
-    public string EditarContatoEvento(string idEvento, Dictionary<string, string> novasInformacoes)
+    public string EditarContatoEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         try
         {
