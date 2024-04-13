@@ -55,20 +55,7 @@ namespace Gestor_de_Eventos.Views
 
         public static void ExibeMensagemBoasVindas()
         {
-            int larguraConsole = Console.WindowWidth;
-            int mensagemPosicao = 0;
-            bool direcao = true;
-            string mensagem = "SEJA BEM VINDO AO GERENCIADOR DE EVENTOS";
-
-            while (true)
-            {
-                Console.Clear(); Console.SetCursorPosition(mensagemPosicao, 0); Console.Write(mensagem);
-
-                mensagemPosicao = direcao ? mensagemPosicao + 1 : mensagemPosicao - 1;
-                direcao = (mensagemPosicao == 0 || mensagemPosicao == larguraConsole - mensagem.Length) ? !direcao : direcao;
-
-                Thread.Sleep(100);
-            }
+            Console.WriteLine("SEJA BEM VINDO AO GERENCIADOR DE EVENTOS");
         }
 
         public static int ObtemOpcoesMenuPrincipal()
@@ -120,7 +107,7 @@ namespace Gestor_de_Eventos.Views
             string valor = CapturaValorDigitado();
 
             Dictionary<int, string> dicionario = new Dictionary<int, string>();
-            dicionario[numero]  = valor;
+            dicionario[numero] = valor;
             return dicionario;
         }
     }
