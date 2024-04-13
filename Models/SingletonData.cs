@@ -141,16 +141,16 @@ public sealed class SingletonData
             switch(novaInformacao.Key)
             {
                 case 1:
-                    eventos[indiceEvento].Contato.Cpf = novaInformacao.Value;
+                    eventos[indiceEvento].Contato!.Cpf = novaInformacao.Value;
                     break;
                 case 2:
-                    eventos[indiceEvento].Contato.Nome = novaInformacao.Value;
+                    eventos[indiceEvento].Contato!.Nome = novaInformacao.Value;
                     break;
                 case 3:
-                    eventos[indiceEvento].Contato.Telefone = novaInformacao.Value;
+                    eventos[indiceEvento].Contato!.Telefone = novaInformacao.Value;
                     break;
                 case 4:
-                    eventos[indiceEvento].Contato.Email = novaInformacao.Value;
+                    eventos[indiceEvento].Contato!.Email = novaInformacao.Value;
                     break;
             }
         }
