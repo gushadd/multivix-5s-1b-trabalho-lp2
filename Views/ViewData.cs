@@ -1,10 +1,5 @@
 ﻿using Gestor_de_Eventos.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Gestor_de_Eventos.Views
 {
