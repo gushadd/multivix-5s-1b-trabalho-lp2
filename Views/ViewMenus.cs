@@ -1,57 +1,11 @@
 ﻿using Gestor_de_Eventos.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Gestor_de_Eventos.Util.Input;
 
 namespace Gestor_de_Eventos.Views
 {
     internal class ViewMenus
     {
         private ViewMenus() { }
-
-        public static int CapturaOpcaoDigitada()
-        {
-            int numero;
-            string entrada;
-            int quantidadeTentativas = 0;
-
-            do
-            {
-                quantidadeTentativas++;
-                if (quantidadeTentativas > 1)
-                {
-                    Console.WriteLine("Insira apenas números inteiros!");
-                }
-                Console.WriteLine("Escolha uma opção >>> ");
-                entrada = Console.ReadLine()!;
-                Console.WriteLine(" ");
-            } while (!int.TryParse(entrada, out numero));
-
-            return numero;
-        }
-
-        public static string CapturaValorDigitado()
-        {
-            string valor;
-            int quantidadeTentativas = 0;
-            Console.WriteLine("Digite o novo valor para a opção escolhida");
-            do
-            {
-                quantidadeTentativas++;
-                if (quantidadeTentativas > 1)
-                {
-                    Console.WriteLine("O valor não pode ficar vazio");
-                }
-                Console.Write("Digite o valor >>> ");
-                valor = Console.ReadLine()!;
-
-            } while (string.IsNullOrEmpty(valor));
-
-            return valor;
-        }
 
         public static void ExibeMensagemBoasVindas()
         {
@@ -66,7 +20,8 @@ namespace Gestor_de_Eventos.Views
             Console.WriteLine("3 - Editar Evento");
             Console.WriteLine("4 - Excluir Evento");
             Console.WriteLine("5 - Exportar Eventos");
-            return CapturaOpcaoDigitada();
+            Console.WriteLine("0 - Sair do Programa");
+            return Teclado.CapturaInteiroDigitado();
         }
 
         public static int ObtemOpcoesMenuListarEventos()
@@ -75,7 +30,7 @@ namespace Gestor_de_Eventos.Views
             Console.WriteLine("1 - Pesquisar Eventos Por Período");
             Console.WriteLine("2 - Pesquisar Eventos Em Uma Data Específica");
             Console.WriteLine("3 - Pesquisar Contato Cadastrado");
-            return CapturaOpcaoDigitada();
+            return Teclado.CapturaInteiroDigitado();
         }
 
         public static Dictionary<int, string> ObtemOpcoesEditarEvento()
@@ -88,8 +43,8 @@ namespace Gestor_de_Eventos.Views
             Console.WriteLine("5 - Quantidade Aproximada de Pessoas");
             Console.WriteLine("6 - Quantidade Prevista de Pessoas");
             Console.WriteLine("7 - Público Alvo");
-            int numero = CapturaOpcaoDigitada();
-            string valor = CapturaValorDigitado();
+            int numero = Teclado.CapturaInteiroDigitado();
+            string valor = Teclado.CapturaStringDigitada();
 
             Dictionary<int, string> dicionario = new Dictionary<int, string>();
             dicionario[numero] = valor;
@@ -103,12 +58,55 @@ namespace Gestor_de_Eventos.Views
             Console.WriteLine("2 - Nome");
             Console.WriteLine("3 - Telefone");
             Console.WriteLine("4 - Email");
-            int numero = CapturaOpcaoDigitada();
-            string valor = CapturaValorDigitado();
+            int numero = Teclado.CapturaInteiroDigitado();
+            string valor = Teclado.CapturaStringDigitada();
 
             Dictionary<int, string> dicionario = new Dictionary<int, string>();
             dicionario[numero] = valor;
             return dicionario;
+        }
+
+        public static Evento ObtemOpcoesAdicionarEvento()
+        {
+            Console.WriteLine("Informe o título do evento");
+            string titulo = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Informe a Data Inicial");
+            DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
+            Console.WriteLine("Informe a Data Final");
+            DateTime dataFinal = Teclado.CapturaDataHoraDigitada();
+            Console.WriteLine("Informe a Descrição");
+            string descricao = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Informe a Quantidade Aproximada de Pessoas");
+            int quantidadeAproximadaDePessoas = Teclado.CapturaInteiroDigitado();
+            Console.WriteLine("Informe a Quantidade Prevista de Pessoas");
+            int quantidadePrevistaDePessoas = Teclado.CapturaInteiroDigitado();
+            Console.WriteLine("Informe o Público Alvo");
+            string publicoAlvo = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Agora preencha as informações do contato");
+            Contato contato = ObtemOpcoesAdicionarContato();
+            Evento evento = new Evento ( titulo, dataInicial, dataFinal, descricao, quantidadeAproximadaDePessoas, quantidadePrevistaDePessoas, publicoAlvo , contato);
+            return evento;
+        }
+
+        public static Contato ObtemOpcoesAdicionarContato()
+        {
+            Console.WriteLine("Informe o nome do contato");
+            string nome = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Informe o CPF do contato");
+            string cpf = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Informe o email do contato");
+            string email = Teclado.CapturaStringDigitada();
+            Console.WriteLine("Informe o número de telefone do contato");
+            string telefone = Teclado.CapturaStringDigitada();
+
+            Contato contato = new Contato(nome, cpf, email, telefone);
+            return contato;
+        }
+
+        public static string ObtemOpcoesIdEvento()
+        {
+            Console.WriteLine("Informe o Id do evento");
+            return Teclado.CapturaStringDigitada();
         }
     }
 }
