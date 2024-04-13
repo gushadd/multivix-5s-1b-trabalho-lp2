@@ -26,7 +26,7 @@ public class SingletonDataController
         return _instanciaGlobal;
     }
 
-    public string AdicionarEvento(string id, string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, 
+    public string AdicionaEvento(string id, string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, 
         string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
     {
         try
@@ -42,7 +42,7 @@ public class SingletonDataController
         }
     }
 
-    public string ExcluirEventoPorId(string id)
+    public string ExcluiEventoPorId(string id)
     {
         try
         {
@@ -56,7 +56,7 @@ public class SingletonDataController
     }
 
     // Aqui, apenas a porção 'dd/MM/yyyy' das datas serão usadas
-    public List<Evento> BuscarEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal) 
+    public List<Evento> BuscaEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal) 
     {       
         List<Evento> eventosNoPeriodo = new();
 
@@ -71,7 +71,7 @@ public class SingletonDataController
     }
 
     // Aqui, apenas a porção 'dd/MM/yyyy' das datas serão usadas
-    public List<Evento> BuscarEventoPorData(DateTime data)
+    public List<Evento> BuscaEventoPorData(DateTime data)
     {
         List<Evento> eventosNaData = new();
 
@@ -85,7 +85,24 @@ public class SingletonDataController
         return eventosNaData;
     }
 
-    public string EditarEvento(string idEvento, Dictionary<int, string> novasInformacoes)
+    public Contato BuscaContato(string nome)
+    {
+        Contato? contato = new();
+
+        foreach (Evento evento in singletonData.ObterEventos())
+        {
+            if (evento.Contato.Nome == nome)
+            {
+                contato = evento.Contato;
+                break;
+            }
+        }
+
+        return contato;
+    }
+
+
+    public string EditaEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         try
         {
@@ -98,7 +115,7 @@ public class SingletonDataController
         }
     }
 
-    public string EditarContatoEvento(string idEvento, Dictionary<int, string> novasInformacoes)
+    public string EditaContatoEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         try
         {

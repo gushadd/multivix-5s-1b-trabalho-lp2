@@ -160,8 +160,7 @@ public sealed class SingletonData
     /// Retorna uma cópia da lista de eventos original
     /// </summary>
     public List<Evento> ObterEventos()
-    {
-        // Retorna uma cópia da lista original
+    {        
         return new List<Evento>(eventos);
     }
 }

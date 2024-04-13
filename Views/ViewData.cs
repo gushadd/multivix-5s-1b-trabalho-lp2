@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Gestor_de_Eventos.Views
 {
-
     internal class ViewData
     {
         private ViewData() { }
