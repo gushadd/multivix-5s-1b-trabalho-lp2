@@ -53,6 +53,24 @@ namespace Gestor_de_Eventos.Views
             return valor;
         }
 
+        public static void ExibeMensagemBoasVindas()
+        {
+            int larguraConsole = Console.WindowWidth;
+            int mensagemPosicao = 0;
+            bool direcao = true;
+            string mensagem = "SEJA BEM VINDO AO GERENCIADOR DE EVENTOS";
+
+            while (true)
+            {
+                Console.Clear(); Console.SetCursorPosition(mensagemPosicao, 0); Console.Write(mensagem);
+
+                mensagemPosicao = direcao ? mensagemPosicao + 1 : mensagemPosicao - 1;
+                direcao = (mensagemPosicao == 0 || mensagemPosicao == larguraConsole - mensagem.Length) ? !direcao : direcao;
+
+                Thread.Sleep(100);
+            }
+        }
+
         public static int ObtemOpcoesMenuPrincipal()
         {
             Console.WriteLine("Escolha uma opção no menu abaixo");
