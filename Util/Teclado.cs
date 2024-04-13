@@ -1,74 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿namespace Gestor_de_Eventos.Util;
 
-namespace Gestor_de_Eventos.Util
+internal class Teclado
 {
-    internal class Teclado
+
+    private Teclado() { }
+    public static int CapturaInteiroDigitado()
     {
+        int numero;
+        string entrada;
+        int quantidadeTentativas = 0;
 
-        private Teclado() { }
-        public static int CapturaInteiroDigitado()
+        do
         {
-            int numero;
-            string entrada;
-            int quantidadeTentativas = 0;
-
-            do
+            quantidadeTentativas++;
+            if (quantidadeTentativas > 1)
             {
-                quantidadeTentativas++;
-                if (quantidadeTentativas > 1)
-                {
-                    Console.WriteLine("Insira apenas números inteiros!");
-                }
-                Console.WriteLine("Escolha uma opção >>> ");
-                entrada = Console.ReadLine()!;
-                Console.WriteLine(" ");
-            } while (!int.TryParse(entrada, out numero));
+                Console.WriteLine("Insira apenas números inteiros!");
+            }
+            Console.WriteLine("Escolha uma opção >>> ");
+            entrada = Console.ReadLine()!;
+            Console.WriteLine(" ");
+        } while (!int.TryParse(entrada, out numero));
 
-            return numero;
-        }
+        return numero;
+    }
 
-        public static string CapturaStringDigitada()
+    public static string CapturaStringDigitada()
+    {
+        string valor;
+        int quantidadeTentativas = 0;
+        do
         {
-            string valor;
-            int quantidadeTentativas = 0;
-            do
+            quantidadeTentativas++;
+            if (quantidadeTentativas > 1)
             {
-                quantidadeTentativas++;
-                if (quantidadeTentativas > 1)
-                {
-                    Console.WriteLine("Esta opção não pode ficar vazia");
-                }
-                Console.Write("Digite o valor >>> ");
-                valor = Console.ReadLine()!;
-                Console.WriteLine(" ");
-            } while (string.IsNullOrEmpty(valor));
+                Console.WriteLine("Esta opção não pode ficar vazia");
+            }
+            Console.Write("Digite o valor >>> ");
+            valor = Console.ReadLine()!;
+            Console.WriteLine(" ");
+        } while (string.IsNullOrEmpty(valor));
 
-            return valor;
-        }
+        return valor;
+    }
 
-        public static DateTime CapturaDataHoraDigitada()
+    public static DateTime CapturaDataHoraDigitada()
+    {
+        string entrada;
+        DateTime data;
+        int quantidadeTentativas = 0;
+        do
         {
-            string entrada;
-            DateTime data;
-            int quantidadeTentativas = 0;
-            do
+            quantidadeTentativas++;
+            if (quantidadeTentativas > 1)
             {
-                quantidadeTentativas++;
-                if (quantidadeTentativas > 1)
-                {
-                    Console.WriteLine("Data e hora não podem ficar vazios");
-                }
-                Console.Write("Digite a data com a hora >>> ");
-                entrada = Console.ReadLine()!;
-                Console.WriteLine(" ");
-            } while (!DateTime.TryParse(entrada, out data));
+                Console.WriteLine("Data e hora não podem ficar vazios");
+            }
+            Console.Write("Digite a data com a hora >>> ");
+            entrada = Console.ReadLine()!;
+            Console.WriteLine(" ");
+        } while (!DateTime.TryParse(entrada, out data));
 
-            return data;
-        }
+        return data;
     }
 }

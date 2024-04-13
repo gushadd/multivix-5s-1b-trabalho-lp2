@@ -1,4 +1,5 @@
 ﻿using Gestor_de_Eventos.Views;
+using Gestor_de_Eventos.Util;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -29,13 +30,10 @@ public class SingletonViewController
     public void BuscaEExibeEventosPorPeriodo()
     {
         Console.Write("Digite a data inicial: ");
-        string entradaDataInicial = Console.ReadLine()!;
+        DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
 
         Console.Write("\nDigite a data final: ");
-        string entradaDataFinal = Console.ReadLine()!;
-
-        DateTime dataInicial = DateTime.Parse(entradaDataInicial);
-        DateTime dataFinal = DateTime.Parse(entradaDataFinal);
+        DateTime dataFinal = Teclado.CapturaDataHoraDigitada();
 
         ViewData.ExibeEvento(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
     }
@@ -43,9 +41,7 @@ public class SingletonViewController
     public void BuscaEExibeEventosPorData ()
     {
         Console.Write("Digite a data: ");
-        string entradaData = Console.ReadLine()!;
-
-        DateTime data = DateTime.Parse(entradaData);
+        DateTime data = Teclado.CapturaDataHoraDigitada();
 
         ViewData.ExibeEvento(singletonDataController.BuscaEventoPorData(data));
     }
@@ -53,7 +49,7 @@ public class SingletonViewController
     public void BuscaEExibeContato()
     {
         Console.Write("Digite o nome do contato a ser pesquisado: ");
-        string nome = Console.ReadLine()!;
+        string nome = Teclado.CapturaStringDigitada();
 
         ViewData.ExibeContato(singletonDataController.BuscaContato(nome));  
     }
