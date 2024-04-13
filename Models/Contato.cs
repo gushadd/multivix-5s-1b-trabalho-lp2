@@ -4,6 +4,14 @@ namespace Gestor_de_Eventos.Models;
 
 public class Contato
 {
+    public Contato(string nome,  string cpf, string email, string telefone)
+    {
+        Nome = nome;
+        Cpf = cpf;
+        Email = email;
+        Telefone = telefone;
+    }
+
     private string? cpf;
     public string? Cpf
     {
