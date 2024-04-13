@@ -53,6 +53,11 @@ namespace Gestor_de_Eventos.Views
             return valor;
         }
 
+        public static void ExibeMensagemBoasVindas()
+        {
+            Console.WriteLine("SEJA BEM VINDO AO GERENCIADOR DE EVENTOS");
+        }
+
         public static int ObtemOpcoesMenuPrincipal()
         {
             Console.WriteLine("Escolha uma opção no menu abaixo");
@@ -102,7 +107,7 @@ namespace Gestor_de_Eventos.Views
             string valor = CapturaValorDigitado();
 
             Dictionary<int, string> dicionario = new Dictionary<int, string>();
-            dicionario[numero]  = valor;
+            dicionario[numero] = valor;
             return dicionario;
         }
     }

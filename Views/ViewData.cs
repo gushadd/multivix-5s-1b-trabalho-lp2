@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,17 @@ namespace Gestor_de_Eventos.Views
     {
         private ViewData() { }
 
-        public static string ExibeEvento (List<Evento> listaDeEventos)
+        public static void ExibeEvento (List<Evento> evento)
+        {
+            Console.WriteLine(EventoAsString(evento));
+        }
+
+        public static void ExibeContato (Contato contato)
+        {
+            Console.WriteLine(ContatoAsString(contato));
+        }
+
+        public static string EventoAsString (List<Evento> listaDeEventos)
         {
             StringBuilder sb = new StringBuilder();
             int numeroDeVoltas = 0;
@@ -29,7 +40,7 @@ namespace Gestor_de_Eventos.Views
                 sb.Append("Quantidade Aproximada de Pessoas: " + e.QuantidadeAproximadaPessoas);
                 sb.Append("Quandidade Prevista de Pessoas: " + e.QuantidadePrevistaPessoas);
                 sb.Append("Público Alvo: " + e.PublicoAlvo);
-                sb.Append("Contato do Evento: " + ExibeContato(e.Contato!));
+                sb.Append("Contato do Evento: " + ContatoAsString(e.Contato!));
 
                 if (!numeroDeVoltas.Equals(listaDeEventos.Count))
                 {
@@ -39,7 +50,7 @@ namespace Gestor_de_Eventos.Views
             return sb.ToString();
         }
 
-        public static string ExibeContato (Contato contato)
+        public static string ContatoAsString (Contato contato)
         {
             if (contato == null) return "Nenhum contato existente";
             return "Nome: " + contato.Nome + ", CPF: " + contato.Cpf + ", telefone: " + contato.Telefone + ", email: " + contato.Email;
