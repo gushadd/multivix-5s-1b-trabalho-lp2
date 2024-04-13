@@ -3,7 +3,6 @@ using System.Text;
 
 namespace Gestor_de_Eventos.Views
 {
-
     internal class ViewData
     {
         private ViewData() { }

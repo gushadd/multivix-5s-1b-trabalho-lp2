@@ -1,11 +1,9 @@
 ﻿using Gestor_de_Eventos.Models;
 using Gestor_de_Eventos.Util.Input;
 
-namespace Gestor_de_Eventos.Views
+internal class ViewMenus
 {
-    internal class ViewMenus
-    {
-        private ViewMenus() { }
+    private ViewMenus() { }
 
         public static void ExibeMensagemBoasVindas()
         {
@@ -46,10 +44,10 @@ namespace Gestor_de_Eventos.Views
             int numero = Teclado.CapturaInteiroDigitado();
             string valor = Teclado.CapturaStringDigitada();
 
-            Dictionary<int, string> dicionario = new Dictionary<int, string>();
-            dicionario[numero] = valor;
-            return dicionario;
-        }
+        Dictionary<int, string> dicionario = new Dictionary<int, string>();
+        dicionario[numero] = valor;
+        return dicionario;
+    }
 
         public static Dictionary<int, string> ObtemOpcoesEditarContato()
         {
