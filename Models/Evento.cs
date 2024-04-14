@@ -5,10 +5,9 @@ namespace Gestor_de_Eventos.Models;
 
 public class Evento
 {
-    public Evento(string id, string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
+    public Evento(string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
         string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
     {
-        Id = id;
         Titulo = titulo;
         DataHoraInicio = dataHoraInicio;
         DataHoraFinal = dataHoraFinal;
@@ -23,13 +22,6 @@ public class Evento
     public string? Id 
     {
         get { return id; }
-
-        set
-        {
-            if (value == null) throw new ArgumentNullException("Id não pode ser nulo");
-            if (!Regex.IsMatch(value, @"^[a-zA-Z0-9]{6}$")) throw new ArgumentException("Id deve ser alfanumérico com tamanho de 6 caracteres");
-            id = value;
-        }
     }
 
     private string? titulo;

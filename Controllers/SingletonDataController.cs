@@ -1,4 +1,5 @@
 ﻿using Gestor_de_Eventos.Models;
+using Gestor_de_Eventos.Views;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -26,13 +27,12 @@ public class SingletonDataController
         return _instanciaGlobal;
     }
 
-    public string AdicionaEvento(string id, string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal, 
-        string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
+    public string AdicionarEvento()
     {
+
         try
         {
-            Evento evento = new Evento(id, titulo, dataHoraInicio, dataHoraFinal, descricao, quantidadeAproximadaPessoas, quantidadePrevistaPessoas, publicoAlvo, contato);
-            singletonData.AdicionarEvento(evento);
+            singletonData.AdicionarEvento(ViewMenus.ObtemOpcoesAdicionarEvento());
 
             return "Evento adicionado com sucesso!";
         } 
