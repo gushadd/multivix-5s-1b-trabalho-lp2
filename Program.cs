@@ -18,10 +18,12 @@ public class Program
             opcao = ViewMenus.ObtemOpcoesMenuPrincipal();
             switch (opcao)
             {
+                case 0: //sai do programa
+                    break;
                 case 1:
                     statusExecucao = sdc.AdicionarEvento();
                     break;
-                case 2:
+                case 2:                    
                     Console.WriteLine("");
                     break;
                 case 3:

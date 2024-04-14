@@ -2,7 +2,6 @@
 {
     internal class Teclado
     {
-
         private Teclado() { }
         public static int CapturaInteiroDigitado()
         {
