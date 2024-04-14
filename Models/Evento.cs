@@ -5,9 +5,12 @@ namespace Gestor_de_Eventos.Models;
 
 public class Evento
 {
+    private static HashSet<string> idsGerados = new HashSet<string>();
+
     public Evento(string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
         string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
     {
+        Id = GerarIdUnico();
         Titulo = titulo;
         DataHoraInicio = dataHoraInicio;
         DataHoraFinal = dataHoraFinal;
@@ -22,6 +25,7 @@ public class Evento
     public string? Id 
     {
         get { return id; }
+        private set { id = value; }
     }
 
     private string? titulo;
@@ -120,5 +124,23 @@ public class Evento
         {
             contato = value;
         }
+    }
+
+    private string GerarIdUnico()
+    {
+        var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var random = new Random();
+        string idUnico;
+        do
+        {
+            char[] idArray = new char[6];
+            for (int i = 0; i < idArray.Length; i++)
+            {
+                idArray[i] = caracteres[random.Next(caracteres.Length)];
+            }
+            idUnico = new String(idArray);
+        } while (idsGerados.Contains(idUnico));
+        idsGerados.Add(idUnico);
+        return idUnico;
     }
 }

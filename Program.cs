@@ -8,6 +8,7 @@ public class Program
     static void Main(string[] args)
     {
         SingletonDataController sdc = SingletonDataController.GetInstancia();
+        SingletonViewController svc = SingletonViewController.GetInstancia();
 
         ViewMenus.ExibeMensagemBoasVindas();
         int opcao = int.MinValue;
@@ -23,8 +24,8 @@ public class Program
                 case 1:
                     statusExecucao = sdc.AdicionarEvento();
                     break;
-                case 2:                    
-                    Console.WriteLine("");
+                case 2:
+                    svc.ObtemOpcoesMenuPesquisa();
                     break;
                 case 3:
                     statusExecucao = sdc.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
