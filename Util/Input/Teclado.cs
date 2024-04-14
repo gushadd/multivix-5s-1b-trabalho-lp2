@@ -3,12 +3,12 @@
     internal class Teclado
     {
 
-    private Teclado() { }
-    public static int CapturaInteiroDigitado()
-    {
-        int numero;
-        string entrada;
-        int quantidadeTentativas = 0;
+        private Teclado() { }
+        public static int CapturaInteiroDigitado()
+        {
+            int numero;
+            string entrada;
+            int quantidadeTentativas = 0;
 
             do
             {
@@ -22,45 +22,46 @@
                 Console.WriteLine(" ");
             } while (!int.TryParse(entrada, out numero));
 
-        return numero;
-    }
+            return numero;
+        }
 
-    public static string CapturaStringDigitada()
-    {
-        string valor;
-        int quantidadeTentativas = 0;
-        do
+        public static string CapturaStringDigitada()
         {
-            quantidadeTentativas++;
-            if (quantidadeTentativas > 1)
+            string valor;
+            int quantidadeTentativas = 0;
+            do
             {
-                Console.WriteLine("Esta opção não pode ficar vazia");
-            }
-            Console.Write("Digite o valor >>> ");
-            valor = Console.ReadLine()!;
-            Console.WriteLine(" ");
-        } while (string.IsNullOrEmpty(valor));
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    Console.WriteLine("Esta opção não pode ficar vazia");
+                }
+                Console.Write("Digite o valor >>> ");
+                valor = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (string.IsNullOrEmpty(valor));
 
-        return valor;
-    }
+            return valor;
+        }
 
-    public static DateTime CapturaDataHoraDigitada()
-    {
-        string entrada;
-        DateTime data;
-        int quantidadeTentativas = 0;
-        do
+        public static DateTime CapturaDataHoraDigitada()
         {
-            quantidadeTentativas++;
-            if (quantidadeTentativas > 1)
+            string entrada;
+            DateTime data;
+            int quantidadeTentativas = 0;
+            do
             {
-                Console.WriteLine("Data e hora não podem ficar vazios");
-            }
-            Console.Write("Digite a data com a hora >>> ");
-            entrada = Console.ReadLine()!;
-            Console.WriteLine(" ");
-        } while (!DateTime.TryParse(entrada, out data));
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    Console.WriteLine("Data e hora não podem ficar vazios");
+                }
+                Console.Write("Digite a data com a hora >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!DateTime.TryParse(entrada, out data));
 
-        return data;
+            return data;
+        }
     }
 }
