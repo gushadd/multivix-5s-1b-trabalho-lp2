@@ -1,5 +1,5 @@
 ﻿using Gestor_de_Eventos.Views;
-using Gestor_de_Eventos.Util;
+using Gestor_de_Eventos.Util.Input;
 
 namespace Gestor_de_Eventos.Controllers;
 
