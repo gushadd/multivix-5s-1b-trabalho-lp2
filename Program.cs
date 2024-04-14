@@ -25,10 +25,10 @@ public class Program
                     Console.WriteLine("");
                     break;
                 case 3:
-                    statusExecucao = sdc.EditarEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
+                    statusExecucao = sdc.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
                     break;
                 case 4:
-                    sdc.ExcluirEventoPorId(ViewMenus.ObtemOpcoesIdEvento());
+                    sdc.ExcluiEventoPorId(ViewMenus.ObtemOpcoesIdEvento());
                     break;
                 case 5:
                     Console.WriteLine("Em construção");
