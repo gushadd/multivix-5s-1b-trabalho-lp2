@@ -87,7 +87,7 @@ public class SingletonDataController
 
     public Contato BuscaContato(string nome)
     {
-        Contato? contato = new();
+        Contato? contato = null;
 
         foreach (Evento evento in singletonData.ObterEventos())
         {

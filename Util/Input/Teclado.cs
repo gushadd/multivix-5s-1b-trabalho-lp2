@@ -1,8 +1,7 @@
-﻿namespace Gestor_de_Eventos.Util.Input
-{
-    internal class Teclado
-    {
+﻿namespace Gestor_de_Eventos.Util.Input;
 
+internal class Teclado
+{
     private Teclado() { }
     public static int CapturaInteiroDigitado()
     {
