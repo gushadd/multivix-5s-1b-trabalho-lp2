@@ -30,6 +30,7 @@ internal class ViewMenus
         Console.WriteLine("1 - Pesquisar Eventos Por Período");
         Console.WriteLine("2 - Pesquisar Eventos Em Uma Data Específica");
         Console.WriteLine("3 - Pesquisar Contato Cadastrado");
+        Console.WriteLine("0 - Sair da Pesquisa");
         return Teclado.CapturaInteiroDigitado();
     }
 
