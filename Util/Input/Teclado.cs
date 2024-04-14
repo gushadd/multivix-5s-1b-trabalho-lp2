@@ -1,7 +1,7 @@
-﻿namespace Gestor_de_Eventos.Util;
-
-internal class Teclado
+﻿namespace Gestor_de_Eventos.Util.Input
 {
+    internal class Teclado
+    {
 
     private Teclado() { }
     public static int CapturaInteiroDigitado()
@@ -10,17 +10,17 @@ internal class Teclado
         string entrada;
         int quantidadeTentativas = 0;
 
-        do
-        {
-            quantidadeTentativas++;
-            if (quantidadeTentativas > 1)
+            do
             {
-                Console.WriteLine("Insira apenas números inteiros!");
-            }
-            Console.WriteLine("Escolha uma opção >>> ");
-            entrada = Console.ReadLine()!;
-            Console.WriteLine(" ");
-        } while (!int.TryParse(entrada, out numero));
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    Console.WriteLine("Insira apenas números inteiros!");
+                }
+                Console.Write("Escolha uma opção >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!int.TryParse(entrada, out numero));
 
         return numero;
     }
