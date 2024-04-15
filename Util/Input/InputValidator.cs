@@ -1,5 +1,4 @@
 ﻿using Gestor_de_Eventos.Util.Patterns;
-using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Gestor_de_Eventos.Util.Input
@@ -10,7 +9,12 @@ namespace Gestor_de_Eventos.Util.Input
 
         public static bool ValidaFormatoDataHoraMinutoBrasileiro(DateTime dataHora)
         {
-            return DateTime.TryParseExact(dataHora.ToString(ValidationPatterns.FormatoDataHoraMinutoBrasileiro), ValidationPatterns.FormatoDataHoraMinutoBrasileiro, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data);
+            return Regex.IsMatch(dataHora.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro), ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
+        }
+
+        public static bool ValidaFormatoDataHoraMinutoBrasileiro(string dataHora)
+        {
+            return Regex.IsMatch(dataHora, ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
         }
 
         public static bool ValidaFormatoEmail(string email)
