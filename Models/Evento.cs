@@ -155,6 +155,6 @@ public class Evento
              + " Quantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
              + " Quandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
              + " Público Alvo: " + PublicoAlvo
-             + " Contato: " + Contato.ToString();
+             + " Contato: " + Contato!.ToString();
     }
 }
