@@ -17,6 +17,16 @@ namespace Gestor_de_Eventos.Util.Input
             return Regex.IsMatch(dataHora, ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
         }
 
+        public static bool ValidaFormatoDataBrasileira(DateOnly data)
+        {
+            return Regex.IsMatch(data.ToString(ValidationPatterns.MascaraDataBrasileira), ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
+        }
+
+        public static bool ValidaFormatoDataBrasileiro(string data)
+        {
+            return Regex.IsMatch(data, ValidationPatterns.FormatoDataBrasileira);
+        }
+
         public static bool ValidaFormatoEmail(string email)
         {
             return Regex.IsMatch(email, ValidationPatterns.FormatoEmail);
