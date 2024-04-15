@@ -60,7 +60,7 @@ public class SingletonViewController
         Console.Write("\nDigite a data final: ");
         DateTime dataFinal = Teclado.CapturaDataHoraDigitada();
 
-        ViewData.ExibeEvento(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
+        ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
     }
 
     public void BuscaEExibeEventosPorData ()
@@ -68,7 +68,7 @@ public class SingletonViewController
         Console.Write("Digite a data: ");
         DateTime data = Teclado.CapturaDataHoraDigitada();
 
-        ViewData.ExibeEvento(singletonDataController.BuscaEventoPorData(data));
+        ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventoPorData(data));
     }
 
     public void BuscaEExibeContato()
@@ -76,6 +76,6 @@ public class SingletonViewController
         Console.Write("Digite o nome do contato a ser pesquisado: ");
         string nome = Teclado.CapturaStringDigitada();
 
-        ViewData.ExibeContato(singletonDataController.BuscaContato(nome));  
+        Console.WriteLine(singletonDataController.BuscaContato(nome).ToString());
     }
 }
