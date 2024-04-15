@@ -47,7 +47,7 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
+            if (!DateTime.TryParseExact(value.ToString("dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
                 throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
 
             if (value < DateTime.Now) throw new ArgumentException("A data/hora início não pode ser anterior ao dia de hoje");
@@ -62,7 +62,7 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
+            if (!DateTime.TryParseExact(value.ToString("dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
                 throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
 
             if (value < DataHoraInicio) throw new ArgumentException("A data/hora final não pode ser anterior a data/hora início");
