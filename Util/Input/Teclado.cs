@@ -17,7 +17,7 @@ namespace Gestor_de_Eventos.Util.Input
                 {
                     Console.WriteLine("Insira apenas números inteiros!");
                 }
-                Console.Write("Escolha uma opção >>> ");
+                Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
             } while (!InputValidator.ContemApenasNumerosInteiros(entrada));
@@ -36,7 +36,7 @@ namespace Gestor_de_Eventos.Util.Input
                 {
                     Console.WriteLine("Esta opção não pode ficar vazia");
                 }
-                Console.Write("Digite o valor >>> ");
+                Console.Write("Digite aqui >>> ");
                 valor = Console.ReadLine()!;
                 Console.WriteLine(" ");
             } while (string.IsNullOrEmpty(valor));
@@ -53,9 +53,9 @@ namespace Gestor_de_Eventos.Util.Input
                 quantidadeTentativas++;
                 if (quantidadeTentativas > 1)
                 {
-                    Console.WriteLine("Data e hora não podem ficar vazios");
+                    Console.WriteLine("Data e hora não podem ficar vazios e deve possuir o formato dd/MM/yyyy HH:mm");
                 }
-                Console.Write("Digite a data com a hora >>> ");
+                Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
             } while (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(entrada));
@@ -72,9 +72,9 @@ namespace Gestor_de_Eventos.Util.Input
                 quantidadeTentativas++;
                 if (quantidadeTentativas > 1)
                 {
-                    Console.WriteLine("Data não pode ficar vazia");
+                    Console.WriteLine("Data não pode ficar vazia e deve possuir o formato dd/MM/yyyy");
                 }
-                Console.Write("Digite a data >>> ");
+                Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
             } while (!InputValidator.ValidaFormatoDataBrasileiro(entrada));
