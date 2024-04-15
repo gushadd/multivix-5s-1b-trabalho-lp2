@@ -62,5 +62,24 @@ namespace Gestor_de_Eventos.Util.Input
 
             return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
+
+        public static DateOnly CapturaDataDigitada()
+        {
+            string entrada;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    Console.WriteLine("Data não pode ficar vazia");
+                }
+                Console.Write("Digite a data >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaFormatoDataBrasileiro(entrada));
+
+            return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
+        }
     }
 }
