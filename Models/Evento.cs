@@ -1,11 +1,11 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Gestor_de_Eventos.Models;
 
 public class Evento
 {
     private static HashSet<string> idsGerados = new HashSet<string>();
+    private const string FormatoDataEvento = "dd/MM/yyyy HH:mm";
 
     public Evento(string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
         string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
@@ -47,8 +47,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString("dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
+            if (!DateTime.TryParseExact(value.ToString(FormatoDataEvento), FormatoDataEvento, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
+                throw new ArgumentException($"A data precisa estar no formato {FormatoDataEvento}");
 
             if (value < DateTime.Now) throw new ArgumentException("A data/hora início não pode ser anterior ao dia de hoje");
             dataHoraInicio = value;
@@ -62,8 +62,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString("dd/MM/yyyy HH:mm"), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
+            if (!DateTime.TryParseExact(value.ToString(FormatoDataEvento), FormatoDataEvento, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
+                throw new ArgumentException($"A data precisa estar no formato {FormatoDataEvento}");
 
             if (value < DataHoraInicio) throw new ArgumentException("A data/hora final não pode ser anterior a data/hora início");
             dataHoraFinal = value;
