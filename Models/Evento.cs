@@ -1,11 +1,12 @@
-﻿using System.Globalization;
+﻿using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Patterns;
+using System.Globalization;
 
 namespace Gestor_de_Eventos.Models;
 
 public class Evento
 {
     private static HashSet<string> idsGerados = new HashSet<string>();
-    private const string FormatoDataEvento = "dd/MM/yyyy HH:mm";
 
     public Evento(string titulo, DateTime dataHoraInicio, DateTime dataHoraFinal,
         string descricao, int quantidadeAproximadaPessoas, int quantidadePrevistaPessoas, string publicoAlvo, Contato contato)
@@ -47,8 +48,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(FormatoDataEvento), FormatoDataEvento, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException($"A data precisa estar no formato {FormatoDataEvento}");
+            if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(value))
+                throw new ArgumentException($"A data precisa estar no formato {ValidationPatterns.FormatoDataHoraMinutoBrasileiro}");
 
             if (value < DateTime.Now) throw new ArgumentException("A data/hora início não pode ser anterior ao dia de hoje");
             dataHoraInicio = value;
@@ -62,8 +63,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(FormatoDataEvento), FormatoDataEvento, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException($"A data precisa estar no formato {FormatoDataEvento}");
+            if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(value))
+                throw new ArgumentException($"A data precisa estar no formato {ValidationPatterns.FormatoDataHoraMinutoBrasileiro}");
 
             if (value < DataHoraInicio) throw new ArgumentException("A data/hora final não pode ser anterior a data/hora início");
             dataHoraFinal = value;
@@ -88,7 +89,7 @@ public class Evento
         set
         {
             if (value <= 0) throw new ArgumentOutOfRangeException("A quantidade precisa ser maior que zero");
-            if (!int.TryParse(value.ToString(), out int valor)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
+            if (!InputValidator.ContemApenasNumerosInteiros(value)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
             quantidadeAproximadaPessoas = value;
         }
     }
@@ -100,7 +101,7 @@ public class Evento
         set
         {
             if (value <= 0) throw new ArgumentOutOfRangeException("A quantidade precisa ser maior que zero");
-            if (!int.TryParse(value.ToString(), out int valor)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
+            if (!InputValidator.ContemApenasNumerosInteiros(value)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
             quantidadePrevistaPessoas = value;
         }
     }
