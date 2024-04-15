@@ -1,5 +1,6 @@
 ﻿using Gestor_de_Eventos.Views;
 using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Patterns;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -54,26 +55,26 @@ public class SingletonViewController
 
     public void BuscaEExibeEventosPorPeriodo()
     {
-        Console.Write("Digite a data inicial: ");
-        DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data inicial");
+        DateTime dataInicial = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
-        Console.Write("\nDigite a data final: ");
-        DateTime dataFinal = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data final");
+        DateTime dataFinal = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
         ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
     }
 
     public void BuscaEExibeEventosPorData ()
     {
-        Console.Write("Digite a data: ");
-        DateTime data = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data");
+        DateTime data = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
         ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventoPorData(data));
     }
 
     public void BuscaEExibeContato()
     {
-        Console.Write("Digite o nome do contato a ser pesquisado: ");
+        Console.WriteLine("Digite o nome do contato a ser pesquisado");
         string nome = Teclado.CapturaStringDigitada();
 
         Console.WriteLine(singletonDataController.BuscaContato(nome).ToString());
