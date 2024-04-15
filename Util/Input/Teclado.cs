@@ -1,11 +1,12 @@
-﻿namespace Gestor_de_Eventos.Util.Input
+﻿using Gestor_de_Eventos.Util.Patterns;
+
+namespace Gestor_de_Eventos.Util.Input
 {
     internal class Teclado
     {
         private Teclado() { }
         public static int CapturaInteiroDigitado()
         {
-            int numero;
             string entrada;
             int quantidadeTentativas = 0;
 
@@ -19,9 +20,9 @@
                 Console.Write("Escolha uma opção >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!int.TryParse(entrada, out numero));
+            } while (!InputValidator.ContemApenasNumerosInteiros(entrada));
 
-            return numero;
+            return Int32.Parse(entrada);
         }
 
         public static string CapturaStringDigitada()
@@ -46,7 +47,6 @@
         public static DateTime CapturaDataHoraDigitada()
         {
             string entrada;
-            DateTime data;
             int quantidadeTentativas = 0;
             do
             {
@@ -58,9 +58,9 @@
                 Console.Write("Digite a data com a hora >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!DateTime.TryParse(entrada, out data));
+            } while (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(entrada));
 
-            return data;
+            return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
     }
 }
