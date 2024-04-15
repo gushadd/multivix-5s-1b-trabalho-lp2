@@ -23,14 +23,14 @@ public class Program
                     break;
                 case 1:
                     statusExecucao = sdc.AdicionarEvento();
-                    Console.Write(statusExecucao);
+                    Console.WriteLine(statusExecucao);
                     break;
                 case 2:
                     svc.ObtemOpcoesMenuPesquisa();
                     break;
                 case 3:
                     statusExecucao = sdc.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
-                    Console.Write(statusExecucao);
+                    Console.WriteLine(statusExecucao);
                     break;
                 case 4:
                     sdc.ExcluiEventoPorId(ViewMenus.ObtemOpcoesIdEvento());
