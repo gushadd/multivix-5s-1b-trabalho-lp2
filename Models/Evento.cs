@@ -143,4 +143,17 @@ public class Evento
         idsGerados.Add(idUnico);
         return idUnico;
     }
+
+    public override string ToString()
+    {
+        return "ID do Evento: " + Id
+             + " Título: " + Titulo
+             + " Data e Hora de Início: " + DataHoraInicio
+             + " Data e Hora de Encerramento: " + DataHoraFinal
+             + " Descrição: " + Descricao
+             + " Quantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
+             + " Quandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
+             + " Público Alvo: " + PublicoAlvo
+             + " Contato: " + Contato.ToString();
+    }
 }

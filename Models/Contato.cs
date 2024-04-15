@@ -61,4 +61,9 @@ public class Contato
             email = value;
         }
     }
+
+    public override string ToString()
+    {
+        return "Nome: " + Nome + ", CPF: " + Cpf + ", telefone: " + Telefone + ", email: " + Email;
+    }
 }
