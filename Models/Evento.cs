@@ -1,7 +1,6 @@
 ﻿using Gestor_de_Eventos.Util.Input;
 using Gestor_de_Eventos.Util.Output;
 using Gestor_de_Eventos.Util.Patterns;
-using System.Globalization;
 
 namespace Gestor_de_Eventos.Models;
 

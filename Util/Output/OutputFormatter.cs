@@ -1,5 +1,4 @@
 ﻿using Gestor_de_Eventos.Util.Patterns;
-using System.Text.RegularExpressions;
 
 namespace Gestor_de_Eventos.Util.Output
 {

@@ -1,6 +1,5 @@
 ﻿using Gestor_de_Eventos.Util.Input;
 using Gestor_de_Eventos.Util.Output;
-using System.Text.RegularExpressions;
 
 namespace Gestor_de_Eventos.Models;
 
