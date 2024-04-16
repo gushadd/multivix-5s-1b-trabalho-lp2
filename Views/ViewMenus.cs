@@ -1,5 +1,6 @@
 ﻿using Gestor_de_Eventos.Models;
 using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Patterns;
 
 namespace Gestor_de_Eventos.Views;
 
@@ -36,33 +37,100 @@ internal class ViewMenus
 
     public static Dictionary<int, string> ObtemOpcoesEditarEvento()
     {
-        Console.WriteLine("Escolha o que deseja editar no evento");
-        Console.WriteLine("1 - Título");
-        Console.WriteLine("2 - Data Inicial");
-        Console.WriteLine("3 - Data Final");
-        Console.WriteLine("4 - Descrição");
-        Console.WriteLine("5 - Quantidade Aproximada de Pessoas");
-        Console.WriteLine("6 - Quantidade Prevista de Pessoas");
-        Console.WriteLine("7 - Público Alvo");
-        int numero = Teclado.CapturaInteiroDigitado();
-        string valor = Teclado.CapturaStringDigitada();
+        int numero = int.MinValue;
+        int quantidadeDeTentativas = 0;
 
+        while (numero < 0 || numero > 7)
+        {
+            quantidadeDeTentativas++;
+
+            if (quantidadeDeTentativas > 1)
+            {
+                Console.WriteLine("Opção digitada não é valida!");
+            }
+
+            Console.WriteLine("Escolha o que deseja editar no evento");
+            Console.WriteLine("0 - Sair do modo de edição");
+            Console.WriteLine("1 - Título");
+            Console.WriteLine("2 - Data Inicial");
+            Console.WriteLine("3 - Data Final");
+            Console.WriteLine("4 - Descrição");
+            Console.WriteLine("5 - Quantidade Aproximada de Pessoas");
+            Console.WriteLine("6 - Quantidade Prevista de Pessoas");
+            Console.WriteLine("7 - Público Alvo");
+            numero = Teclado.CapturaInteiroDigitado();
+        }
+
+        string valor;
         Dictionary<int, string> dicionario = new Dictionary<int, string>();
+        switch (numero)
+        {
+            case 0:
+                return dicionario;
+            case 2:
+                valor = Teclado.CapturaDataHoraDigitada().ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro);
+                break;
+            case 3:
+                valor = Teclado.CapturaDataHoraDigitada().ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro);
+                break;
+            case 5:
+                valor = Teclado.CapturaInteiroDigitado().ToString();
+                break;
+            case 6:
+                valor = Teclado.CapturaInteiroDigitado().ToString();
+                break;
+            default:
+                valor = Teclado.CapturaStringDigitada();
+                break;
+        }
+
         dicionario[numero] = valor;
         return dicionario;
     }
 
     public static Dictionary<int, string> ObtemOpcoesEditarContato()
     {
-        Console.WriteLine("Escolha o que deseja editar no contato");
-        Console.WriteLine("1 - Cpf");
-        Console.WriteLine("2 - Nome");
-        Console.WriteLine("3 - Telefone");
-        Console.WriteLine("4 - Email");
-        int numero = Teclado.CapturaInteiroDigitado();
-        string valor = Teclado.CapturaStringDigitada();
+        int numero = int.MinValue;
+        int quantidadeDeTentativas = 0;
 
+        while (numero < 0 || numero > 4)
+        {
+            quantidadeDeTentativas++;
+
+            if (quantidadeDeTentativas > 1)
+            {
+                Console.WriteLine("Opção digitada não é valida!");
+            }
+
+            Console.WriteLine("Escolha o que deseja editar no contato");
+            Console.WriteLine("0 - Sair do modo de edição");
+            Console.WriteLine("1 - Cpf");
+            Console.WriteLine("2 - Nome");
+            Console.WriteLine("3 - Telefone");
+            Console.WriteLine("4 - Email");
+            numero = Teclado.CapturaInteiroDigitado();
+        }
+
+        string valor;
         Dictionary<int, string> dicionario = new Dictionary<int, string>();
+        switch (numero)
+        {
+            case 0:
+                return dicionario;
+            case 1:
+                valor = Teclado.CapturaCpfDigitado().ToString();
+                break;
+            case 3:
+                valor = Teclado.CapturaTelefoneDigitado().ToString();
+                break;
+            case 4:
+                valor = Teclado.CapturaTelefoneDigitado();
+                break;
+            default:
+                valor = Teclado.CapturaStringDigitada();
+                break;
+        }
+
         dicionario[numero] = valor;
         return dicionario;
     }
@@ -96,9 +164,9 @@ internal class ViewMenus
         Console.WriteLine("Informe o CPF do contato");
         string cpf = Teclado.CapturaCpfDigitado();
         Console.WriteLine("Informe o email do contato");
-        string email = Teclado.CapturaStringDigitada();
+        string email = Teclado.CapturaEmailDigitado();
         Console.WriteLine("Informe o número de telefone do contato");
-        string telefone = Teclado.CapturaStringDigitada();
+        string telefone = Teclado.CapturaTelefoneDigitado();
 
         Contato contato = new Contato(nome, cpf, email, telefone);
         return contato;
