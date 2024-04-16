@@ -16,6 +16,6 @@
 
         public const string FormatoLetras = @"^[\p{L}\s]+$";
 
-        public const string FormatoTelefoneBrasileiroSemCodigoInternacional = @"^\d{29}\d{8}$";
+        public const string FormatoTelefoneBrasileiroSemCodigoInternacional = @"^\d{2}\d{9}$";
     }
 }
