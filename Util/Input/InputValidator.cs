@@ -46,5 +46,18 @@ namespace Gestor_de_Eventos.Util.Input
         {
             return Regex.IsMatch(texto, ValidationPatterns.FormatoLetras);
         }
+
+        public static bool ValidaFormatoCpf(string cpf)
+        {
+            if (cpf.Length != 11)
+            {
+                return false;
+            } else if (!Regex.IsMatch(cpf, ValidationPatterns.FormatoNumerosInteiros))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
