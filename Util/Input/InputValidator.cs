@@ -22,6 +22,19 @@ namespace Gestor_de_Eventos.Util.Input
             return Regex.IsMatch(texto, ValidationPatterns.FormatoLetras);
         }
 
+        public static bool ValidaNomesProprios(string nomeProprio)
+        {
+            if (string.IsNullOrEmpty(nomeProprio))
+            {
+                return false;
+            } else if (!ContemApenasLetras(nomeProprio))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public static bool ValidaFormatoDataHoraMinutoBrasileiro(string dataHora)
         {
             return Regex.IsMatch(dataHora, ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
