@@ -84,14 +84,23 @@ namespace Gestor_de_Eventos.Util.Input
 
         public static string CapturaCpfDigitado()
         {
-            string entrada;
+            string entrada =  null!;
             int quantidadeTentativas = 0;
             do
             {
                 quantidadeTentativas++;
                 if (quantidadeTentativas > 1)
                 {
-                    Console.WriteLine("CPF deve possuir exatamente 11 e apenas números inteiros!");
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("CPF não pode ficar vazio!");
+                    } else if (entrada.Length != 11)
+                    {
+                        Console.WriteLine("CPF deve possuir exatamente 11 caracteres!");
+                    } else
+                    {
+                        Console.WriteLine("CPF deve possuir apenas números inteiros!");
+                    }
                 }
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
