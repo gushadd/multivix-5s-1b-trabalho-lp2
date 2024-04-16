@@ -22,7 +22,7 @@ namespace Gestor_de_Eventos.Util.Input
             return Regex.IsMatch(data.ToString(ValidationPatterns.MascaraDataBrasileira), ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
         }
 
-        public static bool ValidaFormatoDataBrasileiro(string data)
+        public static bool ValidaFormatoDataBrasileira(string data)
         {
             return Regex.IsMatch(data, ValidationPatterns.FormatoDataBrasileira);
         }
@@ -56,7 +56,7 @@ namespace Gestor_de_Eventos.Util.Input
             else if (cpf.Length != 11)
             {
                 return false;
-            } else if (!Regex.IsMatch(cpf, ValidationPatterns.FormatoNumerosInteiros))
+            } else if (!ContemApenasNumerosInteiros(cpf))
             {
                 return false;
             }
