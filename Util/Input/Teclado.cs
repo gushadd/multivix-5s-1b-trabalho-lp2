@@ -146,5 +146,34 @@ namespace Gestor_de_Eventos.Util.Input
 
             return entrada;
         }
+
+        public static string CapturaTelefoneDigitado()
+        {
+            string entrada = null!;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Telefone não pode ficar vazio!");
+                    }
+                    else if (entrada.Length != 11)
+                    {
+                        Console.WriteLine("Telefone deve possuir exatamente 11 números inteiros!");
+                    } else
+                    {
+                        Console.WriteLine("Telefone deve estar no formato DDD+Número (sem espaços). Exemplo: 11987654321!");
+                    }
+                }
+                Console.Write("Digite aqui >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaFormatoTelefoneBrasileiroSemCodigoInternacional(entrada));
+
+            return entrada;
+        }
     }
 }
