@@ -94,7 +94,7 @@ internal class ViewMenus
         Console.WriteLine("Informe o nome do contato");
         string nome = Teclado.CapturaStringDigitada();
         Console.WriteLine("Informe o CPF do contato");
-        string cpf = Teclado.CapturaStringDigitada();
+        string cpf = Teclado.CapturaCpfDigitado();
         Console.WriteLine("Informe o email do contato");
         string email = Teclado.CapturaStringDigitada();
         Console.WriteLine("Informe o número de telefone do contato");
