@@ -109,5 +109,30 @@ namespace Gestor_de_Eventos.Util.Input
 
             return entrada;
         }
+
+        public static string CapturaEmailDigitado()
+        {
+            string entrada = null!;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Email não pode ficar vazio!");
+                    } else
+                    {
+                        Console.WriteLine("Email deve possuir o formato email@dominio.com!");
+                    }
+                }
+                Console.Write("Digite aqui >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaFormatoEmail(entrada));
+
+            return entrada;
+        }
     }
 }
