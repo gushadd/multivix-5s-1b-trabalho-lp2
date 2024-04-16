@@ -81,5 +81,24 @@ namespace Gestor_de_Eventos.Util.Input
 
             return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
         }
+
+        public static string CapturaCpfDigitado()
+        {
+            string entrada;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    Console.WriteLine("CPF deve possuir exatamente 11 e apenas números inteiros!");
+                }
+                Console.Write("Digite aqui >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaFormatoCpf(entrada));
+
+            return entrada;
+        }
     }
 }
