@@ -1,4 +1,5 @@
 ﻿using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Output;
 using System.Text.RegularExpressions;
 
 namespace Gestor_de_Eventos.Models;
@@ -65,6 +66,6 @@ public class Contato
 
     public override string ToString()
     {
-        return "Nome: " + Nome + ", CPF: " + Cpf + ", telefone: " + Telefone + ", email: " + Email;
+        return "Nome: " + Nome + ", CPF: " + OutputFormatter.FormatarCpf(Cpf!) + ", telefone: " + OutputFormatter.FormatarTelefoneBrasileiroSemCodigoInternacional(Telefone!) + ", email: " + Email;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Output;
 using Gestor_de_Eventos.Util.Patterns;
 using System.Globalization;
 
@@ -149,8 +150,8 @@ public class Evento
     {
         return "ID do Evento: " + Id
              + " Título: " + Titulo
-             + " Data e Hora de Início: " + DataHoraInicio
-             + " Data e Hora de Encerramento: " + DataHoraFinal
+             + " Data e Hora de Início: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraInicio)
+             + " Data e Hora de Encerramento: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraFinal)
              + " Descrição: " + Descricao
              + " Quantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
              + " Quandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
