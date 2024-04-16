@@ -37,6 +37,8 @@ public class SingletonViewController
             opcao = ViewMenus.ObtemOpcoesMenuListarEventos();
             switch (opcao)
             {
+                case 0:
+                    break;
                 case 1:
                     BuscaEExibeEventosPorPeriodo();
                     break;
@@ -76,7 +78,8 @@ public class SingletonViewController
     {
         Console.WriteLine("Digite o nome do contato a ser pesquisado");
         string nome = Teclado.CapturaStringDigitada();
+        string nomeEncontrado = singletonDataController.BuscaContato(nome).ToString();
 
-        Console.WriteLine(singletonDataController.BuscaContato(nome).ToString());
+        Console.WriteLine(nomeEncontrado == null ? "Nenhum contato encontrado!" : nomeEncontrado);
     }
 }
