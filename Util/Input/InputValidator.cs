@@ -49,7 +49,11 @@ namespace Gestor_de_Eventos.Util.Input
 
         public static bool ValidaFormatoCpf(string cpf)
         {
-            if (cpf.Length != 11)
+            if (string.IsNullOrEmpty(cpf))
+            {
+                return false;
+            }
+            else if (cpf.Length != 11)
             {
                 return false;
             } else if (!Regex.IsMatch(cpf, ValidationPatterns.FormatoNumerosInteiros))
