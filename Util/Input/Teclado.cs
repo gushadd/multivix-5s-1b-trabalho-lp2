@@ -81,6 +81,9 @@ namespace Gestor_de_Eventos.Util.Input
                     if (string.IsNullOrEmpty(entrada))
                     {
                         Console.WriteLine("Data não pode ficar vazia!");
+                    } else if (entrada.Contains(" "))
+                    {
+                        Console.WriteLine("Data não pode ter espaços vazios!");
                     } else
                     {
                         Console.WriteLine("Data deve possuir o formato dd/MM/yyyy!");
@@ -89,7 +92,7 @@ namespace Gestor_de_Eventos.Util.Input
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!InputValidator.ValidaFormatoDataBrasileiro(entrada));
+            } while (!InputValidator.ValidaFormatoDataBrasileira(entrada));
 
             return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
         }
@@ -106,6 +109,9 @@ namespace Gestor_de_Eventos.Util.Input
                     if (string.IsNullOrEmpty(entrada))
                     {
                         Console.WriteLine("CPF não pode ficar vazio!");
+                    } else if (entrada.Contains(" "))
+                    {
+                        Console.WriteLine("CPF não pode ter espaços vazios!");
                     } else if (entrada.Length != 11)
                     {
                         Console.WriteLine("CPF deve possuir exatamente 11 caracteres!");
@@ -134,6 +140,9 @@ namespace Gestor_de_Eventos.Util.Input
                     if (string.IsNullOrEmpty(entrada))
                     {
                         Console.WriteLine("Email não pode ficar vazio!");
+                    } else if (entrada.Contains(" "))
+                    {
+                        Console.WriteLine("Email não pode ter espaços vazios!");
                     } else
                     {
                         Console.WriteLine("Email deve possuir o formato email@dominio.com!");
@@ -159,13 +168,15 @@ namespace Gestor_de_Eventos.Util.Input
                     if (string.IsNullOrEmpty(entrada))
                     {
                         Console.WriteLine("Telefone não pode ficar vazio!");
-                    }
-                    else if (entrada.Length != 11)
+                    } else if (entrada.Contains(" "))
+                    {
+                        Console.WriteLine("Telefone não pode ter espaços vazios!");
+                    } else if (entrada.Length != 11)
                     {
                         Console.WriteLine("Telefone deve possuir exatamente 11 números inteiros!");
                     } else
                     {
-                        Console.WriteLine("Telefone deve estar no formato DDD+Número (sem espaços). Exemplo: 11987654321!");
+                        Console.WriteLine("Telefone deve estar no formato DDD+Número (sem espaços)! Exemplo: 11987654321.");
                     }
                 }
                 Console.Write("Digite aqui >>> ");
