@@ -44,6 +44,31 @@ namespace Gestor_de_Eventos.Util.Input
             return valor;
         }
 
+        public static string CapturaNomeDigitado()
+        {
+            string valor = null!;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    if (string.IsNullOrEmpty(valor))
+                    {
+                        Console.WriteLine("Nomes não podem ficar vazios!");
+                    } else if (!InputValidator.ContemApenasLetras(valor))
+                    {
+                        Console.WriteLine("Nomes devem conter apenas letras!");
+                    }
+                }
+                Console.Write("Digite aqui >>> ");
+                valor = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaNomesProprios(valor));
+
+            return valor.Trim();
+        }
+
         public static DateTime CapturaDataHoraDigitada()
         {
             string entrada = null!;
