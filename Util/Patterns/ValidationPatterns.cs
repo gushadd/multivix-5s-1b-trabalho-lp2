@@ -15,5 +15,7 @@
         public const string FormatoNumerosInteiros = @"^[0-9]+$";
 
         public const string FormatoLetras = @"^[\p{L}\s]+$";
+
+        public const string FormatoTelefoneBrasileiroSemCodigoInternacional = @"^\d{29}\d{8}$";
     }
 }
