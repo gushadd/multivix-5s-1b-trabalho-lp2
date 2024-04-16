@@ -46,14 +46,20 @@ namespace Gestor_de_Eventos.Util.Input
 
         public static DateTime CapturaDataHoraDigitada()
         {
-            string entrada;
+            string entrada = null!;
             int quantidadeTentativas = 0;
             do
             {
                 quantidadeTentativas++;
                 if (quantidadeTentativas > 1)
                 {
-                    Console.WriteLine("Data e hora não podem ficar vazios e deve possuir o formato dd/MM/yyyy HH:mm");
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Data e hora não podem ficar vazios!");
+                    } else
+                    {
+                        Console.WriteLine("Date e hora devem possuir o formato dd/MM/yyyy HH:mm");
+                    }
                 }
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
@@ -65,14 +71,20 @@ namespace Gestor_de_Eventos.Util.Input
 
         public static DateOnly CapturaDataDigitada()
         {
-            string entrada;
+            string entrada = null!;
             int quantidadeTentativas = 0;
             do
             {
                 quantidadeTentativas++;
                 if (quantidadeTentativas > 1)
                 {
-                    Console.WriteLine("Data não pode ficar vazia e deve possuir o formato dd/MM/yyyy");
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Data não pode ficar vazia!");
+                    } else
+                    {
+                        Console.WriteLine("Data deve possuir o formato dd/MM/yyyy!");
+                    }
                 }
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
