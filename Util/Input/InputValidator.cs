@@ -63,5 +63,21 @@ namespace Gestor_de_Eventos.Util.Input
 
             return true;
         }
+
+        public static bool ValidaFormatoTelefoneBrasileiroSemCodigoInternacional(string telefone)
+        {
+            if (string.IsNullOrEmpty(telefone))
+            {
+                return false;
+            } else if (telefone.Length != 11)
+            {
+                return false;
+            } else  if (!Regex.IsMatch(telefone, ValidationPatterns.FormatoTelefoneBrasileiroSemCodigoInternacional))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
