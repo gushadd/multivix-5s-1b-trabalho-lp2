@@ -9,7 +9,7 @@ public class SingletonDataController
     private static readonly object lockObject = new();
 
     private SingletonData singletonData;
-    
+
     private SingletonDataController()
     {
         singletonData = SingletonData.GetInstancia();
@@ -35,7 +35,7 @@ public class SingletonDataController
             singletonData.AdicionarEvento(ViewMenus.ObtemOpcoesAdicionarEvento());
 
             return "Evento adicionado com sucesso!";
-        } 
+        }
         catch (Exception ex)
         {
             return ex.Message;
@@ -56,8 +56,8 @@ public class SingletonDataController
     }
 
     // Aqui, apenas a porção 'dd/MM/yyyy' das datas serão usadas
-    public List<Evento> BuscaEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal) 
-    {       
+    public List<Evento> BuscaEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+    {
         List<Evento> eventosNoPeriodo = new();
 
         foreach (Evento evento in singletonData.ObterEventos())
@@ -81,7 +81,7 @@ public class SingletonDataController
             {
                 eventosNaData.Add(evento);
             }
-        }        
+        }
         return eventosNaData;
     }
 
@@ -100,7 +100,6 @@ public class SingletonDataController
 
         return contato;
     }
-
 
     public string EditaEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
