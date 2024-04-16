@@ -22,14 +22,14 @@ namespace Gestor_de_Eventos.Util.Input
             return Regex.IsMatch(texto, ValidationPatterns.FormatoLetras);
         }
 
-        public static bool ValidaFormatoDataHoraMinutoBrasileiro(DateTime dataHora)
-        {
-            return Regex.IsMatch(dataHora.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro), ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
-        }
-
         public static bool ValidaFormatoDataHoraMinutoBrasileiro(string dataHora)
         {
             return Regex.IsMatch(dataHora, ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
+        }
+
+        public static bool ValidaFormatoDataHoraMinutoBrasileiro(DateTime dataHora)
+        {
+            return ValidaFormatoDataHoraMinutoBrasileiro(dataHora.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro));
         }
 
         public static bool ValidaFormatoDataBrasileira(DateOnly data)
