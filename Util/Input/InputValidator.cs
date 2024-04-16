@@ -7,6 +7,21 @@ namespace Gestor_de_Eventos.Util.Input
     {
         private InputValidator() { }
 
+        public static bool ContemApenasNumerosInteiros(int numeroInteiro)
+        {
+            return Regex.IsMatch(numeroInteiro.ToString(), ValidationPatterns.FormatoNumerosInteiros);
+        }
+
+        public static bool ContemApenasNumerosInteiros(string numeroInteiro)
+        {
+            return Regex.IsMatch(numeroInteiro.ToString(), ValidationPatterns.FormatoNumerosInteiros);
+        }
+
+        public static bool ContemApenasLetras(string texto)
+        {
+            return Regex.IsMatch(texto, ValidationPatterns.FormatoLetras);
+        }
+
         public static bool ValidaFormatoDataHoraMinutoBrasileiro(DateTime dataHora)
         {
             return Regex.IsMatch(dataHora.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro), ValidationPatterns.FormatoDataHoraMinutoBrasileiro);
@@ -30,21 +45,6 @@ namespace Gestor_de_Eventos.Util.Input
         public static bool ValidaFormatoEmail(string email)
         {
             return Regex.IsMatch(email, ValidationPatterns.FormatoEmail);
-        }
-
-        public static bool ContemApenasNumerosInteiros(int numeroInteiro)
-        {
-            return Regex.IsMatch(numeroInteiro.ToString(), ValidationPatterns.FormatoNumerosInteiros);
-        }
-
-        public static bool ContemApenasNumerosInteiros(string numeroInteiro)
-        {
-            return Regex.IsMatch(numeroInteiro.ToString(), ValidationPatterns.FormatoNumerosInteiros);
-        }
-
-        public static bool ContemApenasLetras(string texto)
-        {
-            return Regex.IsMatch(texto, ValidationPatterns.FormatoLetras);
         }
 
         public static bool ValidaFormatoCpf(string cpf)
