@@ -120,6 +120,9 @@ internal class ViewMenus
             case 1:
                 valor = Teclado.CapturaCpfDigitado().ToString();
                 break;
+            case 2:
+                valor = Teclado.CapturaNomeDigitado();
+                break;
             case 3:
                 valor = Teclado.CapturaTelefoneDigitado().ToString();
                 break;
@@ -160,7 +163,7 @@ internal class ViewMenus
     public static Contato ObtemOpcoesAdicionarContato()
     {
         Console.WriteLine("Informe o nome do contato");
-        string nome = Teclado.CapturaStringDigitada();
+        string nome = Teclado.CapturaNomeDigitado();
         Console.WriteLine("Informe o CPF do contato");
         string cpf = Teclado.CapturaCpfDigitado();
         Console.WriteLine("Informe o email do contato");
