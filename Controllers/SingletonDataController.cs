@@ -106,6 +106,11 @@ public class SingletonDataController
     {
         try
         {
+            if (novasInformacoes.Count == 0)
+            {
+                return "Saindo do modo de edição de evento ...";
+            }
+
             singletonData.EditarEvento(idEvento, novasInformacoes);
             return "Evento editado com sucesso";
         }
@@ -119,6 +124,11 @@ public class SingletonDataController
     {
         try
         {
+            if (novasInformacoes.Count == 0)
+            {
+                return "Saindo do modo de edição de contato ...";
+            }
+
             singletonData.EditarContatoEvento(idEvento, novasInformacoes);
             return "Contato editado com sucesso";
         }
