@@ -98,6 +98,11 @@ namespace Gestor_de_Eventos.Util.Input
             return ValidaPeriodoDateTime(DateTime.ParseExact(dataInicial, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null), dataFinal);
         }
 
+        public static bool ValidaPeriodoDateTime(DateTime dataInicial, string dataFinal)
+        {
+            return ValidaPeriodoDateTime(dataInicial, DateTime.ParseExact(dataFinal, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null));
+        }
+
         public static bool ValidaPeriodoDateTime(DateTime dataInicial, DateTime dataFinal)
         {
             if (!ValidaFormatoDataHoraMinutoBrasileiro(dataInicial))
