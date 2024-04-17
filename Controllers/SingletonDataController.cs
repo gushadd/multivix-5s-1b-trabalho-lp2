@@ -141,4 +141,9 @@ public class SingletonDataController
     {
         return singletonData.GetIdsGerados().Contains(id);
     }
+
+    public Evento GetEvento (string id)
+    {
+        return singletonData.GetEvento(id);
+    }
 }
