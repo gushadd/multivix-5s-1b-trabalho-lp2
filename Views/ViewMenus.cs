@@ -71,7 +71,7 @@ internal class ViewMenus
                 valor = Teclado.CapturaDataHoraDigitada().ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro);
                 break;
             case 3:
-                valor = Teclado.CapturaDataHoraDigitada().ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro);
+                valor = null!;
                 break;
             case 5:
                 valor = Teclado.CapturaInteiroDigitado().ToString();
