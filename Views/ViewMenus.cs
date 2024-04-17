@@ -61,25 +61,38 @@ internal class ViewMenus
             numero = Teclado.CapturaInteiroDigitado();
         }
 
-        string valor;
+        string valor = null!;
         Dictionary<int, string> dicionario = new Dictionary<int, string>();
         switch (numero)
         {
             case 0:
                 return dicionario;
-            case 2:
-                valor = Teclado.CapturaDataHoraDigitada().ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro);
+            case 1:
+                Console.WriteLine("Digite novo título para o evento: ");
+                valor = Teclado.CapturaStringDigitada();
                 break;
-            case 3:
+            case 2:
+                Console.WriteLine("Digite nova data e hora iniciais para o evento: ");
                 valor = null!;
                 break;
+            case 3:
+                Console.WriteLine("Digite nova data e hora finais para o evento: ");
+                valor = null!;
+                break;
+            case 4:
+                Console.WriteLine("Digite nova descrição para o evento: ");
+                valor = Teclado.CapturaStringDigitada();
+                break;
             case 5:
+                Console.WriteLine("Digite nova quantidade aproximada de pessoas: ");
                 valor = Teclado.CapturaInteiroDigitado().ToString();
                 break;
             case 6:
+                Console.WriteLine("Digite nova quantidade prevista de pessoas: ");
                 valor = Teclado.CapturaInteiroDigitado().ToString();
                 break;
-            default:
+            case 7:
+                Console.WriteLine("Digite novo público alvo para o evento: ");
                 valor = Teclado.CapturaStringDigitada();
                 break;
         }
@@ -111,26 +124,27 @@ internal class ViewMenus
             numero = Teclado.CapturaInteiroDigitado();
         }
 
-        string valor;
+        string valor = null!;
         Dictionary<int, string> dicionario = new Dictionary<int, string>();
         switch (numero)
         {
             case 0:
                 return dicionario;
             case 1:
+                Console.WriteLine("Digite novo CPF para o contato: ");
                 valor = Teclado.CapturaCpfDigitado().ToString();
                 break;
             case 2:
+                Console.WriteLine("Digite novo nome para o contato: ");
                 valor = Teclado.CapturaNomeDigitado();
                 break;
             case 3:
+                Console.WriteLine("Digite novo telefone para o contato: ");
                 valor = Teclado.CapturaTelefoneDigitado().ToString();
                 break;
             case 4:
-                valor = Teclado.CapturaTelefoneDigitado();
-                break;
-            default:
-                valor = Teclado.CapturaStringDigitada();
+                Console.WriteLine("Digite nova  para o evento: ");
+                valor = Teclado.CapturaEmailDigitado();
                 break;
         }
 
