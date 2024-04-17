@@ -28,7 +28,7 @@ public class SingletonViewController
         return _instanciaGlobal;
     }
 
-    public void ObtemOpcoesMenuPesquisa()
+    public void ObtemMenuPesquisa()
     {
         int opcao = int.MinValue;
 
@@ -53,6 +53,34 @@ public class SingletonViewController
                     break;
             }
         }
+    }
+
+    public string ObtemMenuEditarEvento()
+    {
+        int opcao = int.MinValue;
+        string statusExecucao = null!;
+
+        while (!opcao.Equals(0))
+        {
+            opcao = ViewMenus.ObtemOpcoesMenuEditarEvento();
+            switch (opcao)
+            {
+                case 0:
+                    statusExecucao = "Nenhum item foi editado";
+                    break;
+                case 1:
+                    statusExecucao = singletonDataController.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
+                    break;
+                case 2:
+                    statusExecucao = singletonDataController.EditaContatoEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarContato());
+                    break;
+                default:
+                    Console.WriteLine("Opção digitada não é valida");
+                    break;
+            }
+        }
+
+        return statusExecucao;
     }
 
     public void BuscaEExibeEventosPorPeriodo()
