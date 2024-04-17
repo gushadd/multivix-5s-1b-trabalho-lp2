@@ -136,4 +136,9 @@ public class SingletonDataController
             return ex.Message;
         }
     }
+
+    public bool VerificaExistenciaId(string id)
+    {
+        return singletonData.GetIdsGerados().Contains(id);
+    }
 }
