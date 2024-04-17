@@ -18,7 +18,7 @@ public class Program
             string statusExecucao = null!;
             opcao = ViewMenus.ObtemOpcoesMenuPrincipal();
 
-            if (opcao > 1 && sdc.ListaDeEventosVazia()) 
+            if (opcao > 1 && sdc.VerificaListaDeEventosVazia()) 
             {
                 Console.WriteLine("Ainda não há eventos cadastrados! ");
                 Thread.Sleep(2000);

@@ -84,6 +84,11 @@ public class SingletonDataController
         return eventosNaData;
     }
 
+    public List<Evento> BuscaListaDeEventos()
+    {
+        return singletonData.ObterEventos();
+    }
+
     public Contato BuscaContato(string nome)
     {
         Contato? contato = null;
@@ -141,7 +146,7 @@ public class SingletonDataController
         return singletonData.GetIdsGerados().Contains(id);
     }
 
-    public bool ListaDeEventosVazia()
+    public bool VerificaListaDeEventosVazia()
     {
         if (singletonData.ObterEventos().Count == 0)
         {
