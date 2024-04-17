@@ -49,7 +49,7 @@ public sealed class SingletonData
             }
         }
 
-        return evento == null ? throw new Exception ("Nenhum evento encontrado com o id fornecido") : evento;
+        return evento == null ? throw new Exception ($"Nenhum evento encontrado com o id {id}") : evento;
     }
 
     /// <summary>
