@@ -48,6 +48,9 @@ public class SingletonViewController
                 case 3:
                     BuscaEExibeContato();
                     break;
+                case 4:
+                    BuscaEExibeEventosCadastrados();
+                    break;
                 default:
                     Console.WriteLine("Opção digitada não é valida!");
                     break;
@@ -125,5 +128,10 @@ public class SingletonViewController
         string nomeEncontrado = singletonDataController.BuscaContato(nome).ToString();
 
         Console.WriteLine(nomeEncontrado == null ? "Nenhum contato encontrado!" : nomeEncontrado);
+    }
+
+    public void BuscaEExibeEventosCadastrados()
+    {
+        ViewData.ExibeListaDeEventos(singletonDataController.BuscaListaDeEventos());
     }
 }
