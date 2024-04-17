@@ -29,7 +29,6 @@ public class SingletonDataController
 
     public string AdicionarEvento()
     {
-
         try
         {
             singletonData.AdicionarEvento(ViewMenus.ObtemOpcoesAdicionarEvento());
@@ -140,5 +139,15 @@ public class SingletonDataController
     public bool VerificaExistenciaId(string id)
     {
         return singletonData.GetIdsGerados().Contains(id);
+    }
+
+    public bool ListaDeEventosVazia()
+    {
+        if (singletonData.ObterEventos().Count == 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
