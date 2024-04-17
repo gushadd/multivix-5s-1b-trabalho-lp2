@@ -153,6 +153,35 @@ namespace Gestor_de_Eventos.Util.Input
             return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
 
+        public static DateTime CapturaDataHoraDigitadaMenorQueDataEspecifica(DateTime dataEspecifica)
+        {
+            string entrada = null!;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Data e hora não podem ficar vazios!");
+                    } else if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(entrada))
+                    {
+                        Console.WriteLine("Date e hora devem possuir o formato dd/MM/yyyy HH:mm");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"A data digitada deve ser menor que {dataEspecifica.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro)}");
+                    }
+                }
+                Console.Write("Digite aqui >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaPeriodoDateTime(dataEspecifica, entrada));
+
+            return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
+        }
+
         public static string CapturaCpfDigitado()
         {
             string entrada =  null!;
