@@ -96,7 +96,7 @@ public sealed class SingletonData
                     break;
 
                 case 2:
-                    eventos[indiceEvento].DataHoraInicio = DateTime.Parse(novaInformacao.Value);
+                    eventos[indiceEvento].DataHoraInicio = Teclado.CapturaDataHoraDigitadaMenorQueDataEspecifica(eventos[indiceEvento].DataHoraFinal);
                     break;
 
                 case 3:
@@ -163,5 +163,17 @@ public sealed class SingletonData
     public List<Evento> ObterEventos()
     {        
         return new List<Evento>(eventos);
+    }
+
+    public HashSet<string> GetIdsGerados()
+    {
+        HashSet<string> idGerados = new HashSet<string>();
+
+        foreach (var evento in ObterEventos())
+        {
+            idGerados.Add(evento.Id!);
+        }
+
+        return idGerados;
     }
 }
