@@ -148,13 +148,13 @@ public class Evento
     public override string ToString()
     {
         return "ID do Evento: " + Id
-             + " Título: " + Titulo
-             + " Data e Hora de Início: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraInicio)
-             + " Data e Hora de Encerramento: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraFinal)
-             + " Descrição: " + Descricao
-             + " Quantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
-             + " Quandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
-             + " Público Alvo: " + PublicoAlvo
-             + " Contato: " + Contato!.ToString();
+             + "\nTítulo: " + Titulo
+             + "\nData e Hora de Início: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraInicio)
+             + "\nData e Hora de Final: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraFinal)
+             + "\nDescrição: " + Descricao
+             + "\nQuantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
+             + "\nQuandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
+             + "\nPúblico Alvo: " + PublicoAlvo
+             + "\nContato: " + Contato!.ToString();
     }
 }
