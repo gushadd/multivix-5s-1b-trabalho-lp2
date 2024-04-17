@@ -1,5 +1,6 @@
-﻿namespace Gestor_de_Eventos.Models;
+﻿using Gestor_de_Eventos.Util.Input;
 
+namespace Gestor_de_Eventos.Models;
 public sealed class SingletonData
 {
     private static SingletonData? _instanciaGlobal;
@@ -48,7 +49,7 @@ public sealed class SingletonData
             }
         }
 
-        return evento == null ? throw new Exception ("Nenhum evento encontrado com o id fornecido") : evento;
+        return evento == null ? throw new Exception ($"Nenhum evento encontrado com o id {id}") : evento;
     }
 
     /// <summary>
@@ -95,11 +96,11 @@ public sealed class SingletonData
                     break;
 
                 case 2:
-                    eventos[indiceEvento].DataHoraInicio = DateTime.Parse(novaInformacao.Value);
+                    eventos[indiceEvento].DataHoraInicio = Teclado.CapturaDataHoraDigitadaMenorQueDataEspecifica(eventos[indiceEvento].DataHoraFinal);
                     break;
 
                 case 3:
-                    eventos[indiceEvento].DataHoraFinal = DateTime.Parse(novaInformacao.Value);
+                    eventos[indiceEvento].DataHoraFinal = Teclado.CapturaDataHoraDigitadaMaiorQueDataEspecifica(eventos[indiceEvento].DataHoraInicio);
                     break;
 
                 case 4:
@@ -162,5 +163,17 @@ public sealed class SingletonData
     public List<Evento> ObterEventos()
     {        
         return new List<Evento>(eventos);
+    }
+
+    public HashSet<string> GetIdsGerados()
+    {
+        HashSet<string> idGerados = new HashSet<string>();
+
+        foreach (var evento in ObterEventos())
+        {
+            idGerados.Add(evento.Id!);
+        }
+
+        return idGerados;
     }
 }

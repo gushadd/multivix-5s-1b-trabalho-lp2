@@ -9,7 +9,7 @@ public class SingletonDataController
     private static readonly object lockObject = new();
 
     private SingletonData singletonData;
-    
+
     private SingletonDataController()
     {
         singletonData = SingletonData.GetInstancia();
@@ -35,7 +35,7 @@ public class SingletonDataController
             singletonData.AdicionarEvento(ViewMenus.ObtemOpcoesAdicionarEvento());
 
             return "Evento adicionado com sucesso!";
-        } 
+        }
         catch (Exception ex)
         {
             return ex.Message;
@@ -56,8 +56,8 @@ public class SingletonDataController
     }
 
     // Aqui, apenas a porção 'dd/MM/yyyy' das datas serão usadas
-    public List<Evento> BuscaEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal) 
-    {       
+    public List<Evento> BuscaEventosPorPeriodo(DateTime dataInicial, DateTime dataFinal)
+    {
         List<Evento> eventosNoPeriodo = new();
 
         foreach (Evento evento in singletonData.ObterEventos())
@@ -81,7 +81,7 @@ public class SingletonDataController
             {
                 eventosNaData.Add(evento);
             }
-        }        
+        }
         return eventosNaData;
     }
 
@@ -91,21 +91,25 @@ public class SingletonDataController
 
         foreach (Evento evento in singletonData.ObterEventos())
         {
-            if (evento.Contato.Nome == nome)
+            if (evento.Contato!.Nome == nome)
             {
                 contato = evento.Contato;
                 break;
             }
         }
 
-        return contato;
+        return contato!;
     }
-
 
     public string EditaEvento(string idEvento, Dictionary<int, string> novasInformacoes)
     {
         try
         {
+            if (novasInformacoes.Count == 0)
+            {
+                return "Saindo do modo de edição de evento ...";
+            }
+
             singletonData.EditarEvento(idEvento, novasInformacoes);
             return "Evento editado com sucesso";
         }
@@ -119,6 +123,11 @@ public class SingletonDataController
     {
         try
         {
+            if (novasInformacoes.Count == 0)
+            {
+                return "Saindo do modo de edição de contato ...";
+            }
+
             singletonData.EditarContatoEvento(idEvento, novasInformacoes);
             return "Contato editado com sucesso";
         }
@@ -126,5 +135,10 @@ public class SingletonDataController
         {
             return ex.Message;
         }
+    }
+
+    public bool VerificaExistenciaId(string id)
+    {
+        return singletonData.GetIdsGerados().Contains(id);
     }
 }

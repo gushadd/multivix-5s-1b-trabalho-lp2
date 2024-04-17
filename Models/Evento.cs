@@ -1,5 +1,6 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
+﻿using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Output;
+using Gestor_de_Eventos.Util.Patterns;
 
 namespace Gestor_de_Eventos.Models;
 
@@ -47,8 +48,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
+            if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(value))
+                throw new ArgumentException($"A data precisa estar no formato {ValidationPatterns.FormatoDataHoraMinutoBrasileiro}");
 
             if (value < DateTime.Now) throw new ArgumentException("A data/hora início não pode ser anterior ao dia de hoje");
             dataHoraInicio = value;
@@ -62,8 +63,8 @@ public class Evento
 
         set
         {
-            if (!DateTime.TryParseExact(value.ToString(), "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime data))
-                throw new ArgumentException("A data precisa estar no formato dd/MM/yyyy HH:mm");
+            if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(value))
+                throw new ArgumentException($"A data precisa estar no formato {ValidationPatterns.FormatoDataHoraMinutoBrasileiro}");
 
             if (value < DataHoraInicio) throw new ArgumentException("A data/hora final não pode ser anterior a data/hora início");
             dataHoraFinal = value;
@@ -88,7 +89,7 @@ public class Evento
         set
         {
             if (value <= 0) throw new ArgumentOutOfRangeException("A quantidade precisa ser maior que zero");
-            if (!int.TryParse(value.ToString(), out int valor)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
+            if (!InputValidator.ContemApenasNumerosInteiros(value)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
             quantidadeAproximadaPessoas = value;
         }
     }
@@ -100,7 +101,7 @@ public class Evento
         set
         {
             if (value <= 0) throw new ArgumentOutOfRangeException("A quantidade precisa ser maior que zero");
-            if (!int.TryParse(value.ToString(), out int valor)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
+            if (!InputValidator.ContemApenasNumerosInteiros(value)) throw new ArgumentException("A quantidade precisa ser um número inteiro");
             quantidadePrevistaPessoas = value;
         }
     }
@@ -142,5 +143,18 @@ public class Evento
         } while (idsGerados.Contains(idUnico));
         idsGerados.Add(idUnico);
         return idUnico;
+    }
+
+    public override string ToString()
+    {
+        return "ID do Evento: " + Id
+             + "\nTítulo: " + Titulo
+             + "\nData e Hora de Início: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraInicio)
+             + "\nData e Hora de Final: " + OutputFormatter.FormatarDataHoraMinutoBrasileiro(DataHoraFinal)
+             + "\nDescrição: " + Descricao
+             + "\nQuantidade Aproximada de Pessoas: " + QuantidadeAproximadaPessoas
+             + "\nQuandidade Prevista de Pessoas: " + QuantidadePrevistaPessoas
+             + "\nPúblico Alvo: " + PublicoAlvo
+             + "\nContato: " + Contato!.ToString();
     }
 }

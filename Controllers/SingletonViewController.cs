@@ -1,5 +1,6 @@
 ﻿using Gestor_de_Eventos.Views;
 using Gestor_de_Eventos.Util.Input;
+using Gestor_de_Eventos.Util.Patterns;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -27,7 +28,7 @@ public class SingletonViewController
         return _instanciaGlobal;
     }
 
-    public void ObtemOpcoesMenuPesquisa()
+    public void ObtemMenuPesquisa()
     {
         int opcao = int.MinValue;
 
@@ -36,6 +37,8 @@ public class SingletonViewController
             opcao = ViewMenus.ObtemOpcoesMenuListarEventos();
             switch (opcao)
             {
+                case 0:
+                    break;
                 case 1:
                     BuscaEExibeEventosPorPeriodo();
                     break;
@@ -52,30 +55,75 @@ public class SingletonViewController
         }
     }
 
+    public string ObtemMenuEditarEvento()
+    {
+        int opcao = int.MinValue;
+        string statusExecucao = null!;
+
+        while (!opcao.Equals(0))
+        {
+            string idEvento = null!;
+            opcao = ViewMenus.ObtemOpcoesMenuEditarEvento();
+            switch (opcao)
+            {
+                case 0:
+                    statusExecucao = "Nenhum item foi editado";
+                    break;
+                case 1:
+                    idEvento = ViewMenus.ObtemOpcoesIdEvento();
+                    if (singletonDataController.VerificaExistenciaId(idEvento))
+                    {
+                        statusExecucao = singletonDataController.EditaEvento(idEvento, ViewMenus.ObtemOpcoesEditarEvento());
+                    } else
+                    {
+                        Console.WriteLine($"Nenhum evento encontrado com o id {idEvento}");
+                    }
+                    break;
+                case 2:
+                    idEvento = ViewMenus.ObtemOpcoesIdEvento();
+                    if (singletonDataController.VerificaExistenciaId(idEvento))
+                    {
+                        statusExecucao = singletonDataController.EditaContatoEvento(idEvento, ViewMenus.ObtemOpcoesEditarContato());
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Nenhum evento encontrado com o id {idEvento}");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Opção digitada não é valida");
+                    break;
+            }
+        }
+
+        return statusExecucao;
+    }
+
     public void BuscaEExibeEventosPorPeriodo()
     {
-        Console.Write("Digite a data inicial: ");
-        DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data inicial");
+        DateTime dataInicial = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
-        Console.Write("\nDigite a data final: ");
-        DateTime dataFinal = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data final");
+        DateTime dataFinal = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
-        ViewData.ExibeEvento(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
+        ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventosPorPeriodo(dataInicial, dataFinal));
     }
 
     public void BuscaEExibeEventosPorData ()
     {
-        Console.Write("Digite a data: ");
-        DateTime data = Teclado.CapturaDataHoraDigitada();
+        Console.WriteLine("Digite a data");
+        DateTime data = DateTime.ParseExact(Teclado.CapturaDataDigitada().ToString(), ValidationPatterns.MascaraDataBrasileira, null);
 
-        ViewData.ExibeEvento(singletonDataController.BuscaEventoPorData(data));
+        ViewData.ExibeListaDeEventos(singletonDataController.BuscaEventoPorData(data));
     }
 
     public void BuscaEExibeContato()
     {
-        Console.Write("Digite o nome do contato a ser pesquisado: ");
+        Console.WriteLine("Digite o nome do contato a ser pesquisado");
         string nome = Teclado.CapturaStringDigitada();
+        string nomeEncontrado = singletonDataController.BuscaContato(nome).ToString();
 
-        ViewData.ExibeContato(singletonDataController.BuscaContato(nome));  
+        Console.WriteLine(nomeEncontrado == null ? "Nenhum contato encontrado!" : nomeEncontrado);
     }
 }
