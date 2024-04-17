@@ -97,32 +97,7 @@ namespace Gestor_de_Eventos.Util.Input
             } while (!InputValidator.ValidaFormatoDataBrasileira(entrada));
 
             return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
-        }
-
-        //public static DateTime CapturaDataHoraDigitada()
-        //{
-        //    string entrada = null!;
-        //    int quantidadeTentativas = 0;
-        //    do
-        //    {
-        //        quantidadeTentativas++;
-        //        if (quantidadeTentativas > 1)
-        //        {
-        //            if (string.IsNullOrEmpty(entrada))
-        //            {
-        //                Console.WriteLine("Data e hora não podem ficar vazios!");
-        //            } else
-        //            {
-        //                Console.WriteLine("Date e hora devem possuir o formato dd/MM/yyyy HH:mm");
-        //            }
-        //        }
-        //        Console.Write("Digite aqui >>> ");
-        //        entrada = Console.ReadLine()!;
-        //        Console.WriteLine(" ");
-        //    } while (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(entrada));
-
-        //    return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
-        //}
+        }        
 
         public static DateTime CapturaDataHoraDigitadaMaiorQueDataEspecifica(DateTime dataEspecifica)
         {
