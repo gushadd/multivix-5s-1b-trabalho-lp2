@@ -25,9 +25,10 @@ namespace Gestor_de_Eventos.Views
 
                 if (!numeroDeVoltas.Equals(listaDeEventos.Count))
                 {
-                    sb.Append(" ");
+                    sb.AppendLine();
                 }
             }
+            sb.AppendLine();
             return sb.ToString();
         }
     }
