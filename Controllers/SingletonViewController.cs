@@ -83,7 +83,7 @@ public class SingletonViewController
                     idEvento = ViewMenus.ObtemOpcoesIdEvento();
                     if (singletonDataController.VerificaExistenciaId(idEvento))
                     {
-                        statusExecucao = singletonDataController.EditaContatoEvento(idEvento, ViewMenus.ObtemOpcoesEditarEvento());
+                        statusExecucao = singletonDataController.EditaContatoEvento(idEvento, ViewMenus.ObtemOpcoesEditarContato());
                     }
                     else
                     {
