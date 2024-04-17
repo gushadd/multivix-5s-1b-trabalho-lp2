@@ -19,7 +19,9 @@ public class Program
             opcao = ViewMenus.ObtemOpcoesMenuPrincipal();
             switch (opcao)
             {
-                case 0: //sai do programa
+                case 0:
+                    Console.WriteLine("Obrigado por usar nosso gerenciador de eventos!");
+                    Console.ReadKey();
                     break;
                 case 1:
                     statusExecucao = sdc.AdicionarEvento();
@@ -33,7 +35,8 @@ public class Program
                     Console.WriteLine(statusExecucao);
                     break;
                 case 4:
-                    sdc.ExcluiEventoPorId(ViewMenus.ObtemOpcoesIdEvento());
+                    statusExecucao = sdc.ExcluiEventoPorId(ViewMenus.ObtemOpcoesIdEvento());
+                    Console.WriteLine(statusExecucao);
                     break;
                 case 5:
                     Console.WriteLine("Em construção");
