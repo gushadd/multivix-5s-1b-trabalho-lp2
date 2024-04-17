@@ -29,7 +29,6 @@ public class SingletonDataController
 
     public string AdicionarEvento()
     {
-
         try
         {
             singletonData.AdicionarEvento(ViewMenus.ObtemOpcoesAdicionarEvento());
@@ -83,6 +82,11 @@ public class SingletonDataController
             }
         }
         return eventosNaData;
+    }
+
+    public List<Evento> BuscaListaDeEventos()
+    {
+        return singletonData.ObterEventos();
     }
 
     public Contato BuscaContato(string nome)
@@ -145,5 +149,15 @@ public class SingletonDataController
     public Evento GetEvento (string id)
     {
         return singletonData.GetEvento(id);
+    }
+    
+    public bool VerificaListaDeEventosVazia()
+    {
+        if (singletonData.ObterEventos().Count == 0)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

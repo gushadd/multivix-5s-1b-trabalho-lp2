@@ -31,6 +31,7 @@ internal class ViewMenus
         Console.WriteLine("1 - Pesquisar Eventos Por Período");
         Console.WriteLine("2 - Pesquisar Eventos Em Uma Data Específica");
         Console.WriteLine("3 - Pesquisar Contato Cadastrado");
+        Console.WriteLine("4 - Listar Todos Os Eventos Cadastrados");
         Console.WriteLine("0 - Sair da Pesquisa");
         return Teclado.CapturaInteiroDigitado();
     }
@@ -156,8 +157,10 @@ internal class ViewMenus
     {
         Console.WriteLine("Informe o título do evento");
         string titulo = Teclado.CapturaStringDigitada();
+        //Console.WriteLine("Informe a Data Inicial");
+        //DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
         Console.WriteLine("Informe a Data Inicial");
-        DateTime dataInicial = Teclado.CapturaDataHoraDigitada();
+        DateTime dataInicial = Teclado.CapturaDataHoraDigitadaMaiorQueDataEspecifica(DateTime.Now);
         Console.WriteLine("Informe a Data Final");
         DateTime dataFinal = Teclado.CapturaDataHoraDigitadaMaiorQueDataEspecifica(dataInicial);
         Console.WriteLine("Informe a Descrição");
