@@ -93,16 +93,6 @@ namespace Gestor_de_Eventos.Util.Input
             return true;
         }
 
-        public static bool ValidaPeriodoDateTime(string dataInicial, DateTime dataFinal)
-        {
-            return ValidaPeriodoDateTime(DateTime.ParseExact(dataInicial, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null), dataFinal);
-        }
-
-        public static bool ValidaPeriodoDateTime(DateTime dataInicial, string dataFinal)
-        {
-            return ValidaPeriodoDateTime(dataInicial, DateTime.ParseExact(dataFinal, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null));
-        }
-
         public static bool ValidaPeriodoDateTime(DateTime dataInicial, DateTime dataFinal)
         {
             if (!ValidaFormatoDataHoraMinutoBrasileiro(dataInicial))
@@ -113,12 +103,22 @@ namespace Gestor_de_Eventos.Util.Input
             {
                 return false;
             }
-            else if (dataFinal.CompareTo(dataInicial) > 0)
+            else if (dataFinal.CompareTo(dataInicial) <= 0)
             {
                 return false;
             }
 
             return true;
+        }
+
+        public static bool ValidaPeriodoDateTime(string dataInicial, DateTime dataFinal)
+        {
+            return ValidaPeriodoDateTime(DateTime.ParseExact(dataInicial, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null), dataFinal);
+        }
+
+        public static bool ValidaPeriodoDateTime(DateTime dataInicial, string dataFinal)
+        {
+            return ValidaPeriodoDateTime(dataInicial, DateTime.ParseExact(dataFinal, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null));
         }
     }
 }
