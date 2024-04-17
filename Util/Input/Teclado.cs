@@ -69,6 +69,36 @@ namespace Gestor_de_Eventos.Util.Input
             return valor.Trim();
         }
 
+        public static DateOnly CapturaDataDigitada()
+        {
+            string entrada = null!;
+            int quantidadeTentativas = 0;
+            do
+            {
+                quantidadeTentativas++;
+                if (quantidadeTentativas > 1)
+                {
+                    if (string.IsNullOrEmpty(entrada))
+                    {
+                        Console.WriteLine("Data não pode ficar vazia!");
+                    }
+                    else if (entrada.Contains(" "))
+                    {
+                        Console.WriteLine("Data não pode ter espaços vazios!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Data deve possuir o formato dd/MM/yyyy!");
+                    }
+                }
+                Console.Write("Digite aqui >>> ");
+                entrada = Console.ReadLine()!;
+                Console.WriteLine(" ");
+            } while (!InputValidator.ValidaFormatoDataBrasileira(entrada));
+
+            return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
+        }
+
         public static DateTime CapturaDataHoraDigitada()
         {
             string entrada = null!;
@@ -94,7 +124,7 @@ namespace Gestor_de_Eventos.Util.Input
             return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
 
-        public static DateOnly CapturaDataDigitada()
+        public static DateTime CapturaDataHoraDigitadaMaiorQueDataEspecifica(DateTime dataEspecifica)
         {
             string entrada = null!;
             int quantidadeTentativas = 0;
@@ -105,21 +135,22 @@ namespace Gestor_de_Eventos.Util.Input
                 {
                     if (string.IsNullOrEmpty(entrada))
                     {
-                        Console.WriteLine("Data não pode ficar vazia!");
-                    } else if (entrada.Contains(" "))
+                        Console.WriteLine("Data e hora não podem ficar vazios!");
+                    } else if (!InputValidator.ValidaFormatoDataHoraMinutoBrasileiro(entrada))
                     {
-                        Console.WriteLine("Data não pode ter espaços vazios!");
-                    } else
+                        Console.WriteLine("Date e hora devem possuir o formato dd/MM/yyyy HH:mm");
+                    }
+                    else
                     {
-                        Console.WriteLine("Data deve possuir o formato dd/MM/yyyy!");
+                        Console.WriteLine($"A data digitada deve ser maior que {dataEspecifica.ToString(ValidationPatterns.MascaraDataHoraMinutoBrasileiro)}");
                     }
                 }
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!InputValidator.ValidaFormatoDataBrasileira(entrada));
+            } while (!InputValidator.ValidaPeriodoDateTime(entrada, dataEspecifica));
 
-            return DateOnly.ParseExact(entrada, ValidationPatterns.MascaraDataBrasileira, null);
+            return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
 
         public static string CapturaCpfDigitado()
