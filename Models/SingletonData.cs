@@ -1,5 +1,6 @@
-﻿namespace Gestor_de_Eventos.Models;
+﻿using Gestor_de_Eventos.Util.Input;
 
+namespace Gestor_de_Eventos.Models;
 public sealed class SingletonData
 {
     private static SingletonData? _instanciaGlobal;
@@ -99,7 +100,7 @@ public sealed class SingletonData
                     break;
 
                 case 3:
-                    eventos[indiceEvento].DataHoraFinal = DateTime.Parse(novaInformacao.Value);
+                    eventos[indiceEvento].DataHoraFinal = Teclado.CapturaDataHoraDigitadaMaiorQueDataEspecifica(eventos[indiceEvento].DataHoraInicio);
                     break;
 
                 case 4:
