@@ -26,10 +26,10 @@ public class Program
                     Console.WriteLine(statusExecucao);
                     break;
                 case 2:
-                    svc.ObtemOpcoesMenuPesquisa();
+                    svc.ObtemMenuPesquisa();
                     break;
                 case 3:
-                    statusExecucao = sdc.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
+                    statusExecucao = svc.ObtemMenuEditarEvento();
                     Console.WriteLine(statusExecucao);
                     break;
                 case 4:
