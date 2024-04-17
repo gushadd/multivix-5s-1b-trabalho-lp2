@@ -148,7 +148,7 @@ namespace Gestor_de_Eventos.Util.Input
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!InputValidator.ValidaPeriodoDateTime(entrada, dataEspecifica));
+            } while (!InputValidator.ValidaPeriodoDateTime(dataEspecifica, entrada));
 
             return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
@@ -177,7 +177,7 @@ namespace Gestor_de_Eventos.Util.Input
                 Console.Write("Digite aqui >>> ");
                 entrada = Console.ReadLine()!;
                 Console.WriteLine(" ");
-            } while (!InputValidator.ValidaPeriodoDateTime(dataEspecifica, entrada));
+            } while (!InputValidator.ValidaPeriodoDateTime(entrada, dataEspecifica));
 
             return DateTime.ParseExact(entrada, ValidationPatterns.MascaraDataHoraMinutoBrasileiro, null);
         }
