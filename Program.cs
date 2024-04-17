@@ -30,6 +30,7 @@ public class Program
             {
                 case 0:
                     Console.WriteLine("Obrigado por usar nosso gerenciador de eventos!");
+                    Console.Write("Pressione qualquer tecla para sair ...");
                     Console.ReadKey();
                     break;
                 case 1:
@@ -48,7 +49,8 @@ public class Program
                     Console.WriteLine(statusExecucao);
                     break;
                 case 5:
-                    Console.WriteLine("Em construção");
+                    statusExecucao = svc.ObtemMenuExportarEvento();
+                    Console.WriteLine(statusExecucao);
                     break;
                 default:
                     Console.WriteLine("Opção digitada não é valida!");

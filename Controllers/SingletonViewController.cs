@@ -1,6 +1,7 @@
 ﻿using Gestor_de_Eventos.Views;
 using Gestor_de_Eventos.Util.Input;
 using Gestor_de_Eventos.Util.Patterns;
+using Gestor_de_Eventos.Util.Output;
 
 namespace Gestor_de_Eventos.Controllers;
 
@@ -100,6 +101,20 @@ public class SingletonViewController
         }
 
         return statusExecucao;
+    }
+
+    public string ObtemMenuExportarEvento()
+    {
+        string idEvento = ViewMenus.ObtemOpcoesIdEvento();
+
+        if (!singletonDataController.VerificaExistenciaId(idEvento))
+        {
+            return $"Nenhum evento encontrado com o id {idEvento}";
+        }
+
+        ExportarEventos.SalvarArquivoTxt(singletonDataController.GetEvento(idEvento));
+
+        return "Evento exportado com sucesso!";
     }
 
     public void BuscaEExibeEventosPorPeriodo()

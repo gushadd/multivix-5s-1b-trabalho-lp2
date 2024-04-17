@@ -146,6 +146,11 @@ public class SingletonDataController
         return singletonData.GetIdsGerados().Contains(id);
     }
 
+    public Evento GetEvento (string id)
+    {
+        return singletonData.GetEvento(id);
+    }
+    
     public bool VerificaListaDeEventosVazia()
     {
         if (singletonData.ObterEventos().Count == 0)
