@@ -91,14 +91,14 @@ public class SingletonDataController
 
         foreach (Evento evento in singletonData.ObterEventos())
         {
-            if (evento.Contato.Nome == nome)
+            if (evento.Contato!.Nome == nome)
             {
                 contato = evento.Contato;
                 break;
             }
         }
 
-        return contato;
+        return contato!;
     }
 
     public string EditaEvento(string idEvento, Dictionary<int, string> novasInformacoes)
