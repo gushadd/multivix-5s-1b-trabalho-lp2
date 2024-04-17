@@ -62,6 +62,7 @@ public class SingletonViewController
 
         while (!opcao.Equals(0))
         {
+            string idEvento = null!;
             opcao = ViewMenus.ObtemOpcoesMenuEditarEvento();
             switch (opcao)
             {
@@ -69,10 +70,25 @@ public class SingletonViewController
                     statusExecucao = "Nenhum item foi editado";
                     break;
                 case 1:
-                    statusExecucao = singletonDataController.EditaEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarEvento());
+                    idEvento = ViewMenus.ObtemOpcoesIdEvento();
+                    if (singletonDataController.VerificaExistenciaId(idEvento))
+                    {
+                        statusExecucao = singletonDataController.EditaEvento(idEvento, ViewMenus.ObtemOpcoesEditarEvento());
+                    } else
+                    {
+                        Console.WriteLine($"Nenhum evento encontrado com o id {idEvento}");
+                    }
                     break;
                 case 2:
-                    statusExecucao = singletonDataController.EditaContatoEvento(ViewMenus.ObtemOpcoesIdEvento(), ViewMenus.ObtemOpcoesEditarContato());
+                    idEvento = ViewMenus.ObtemOpcoesIdEvento();
+                    if (singletonDataController.VerificaExistenciaId(idEvento))
+                    {
+                        statusExecucao = singletonDataController.EditaContatoEvento(idEvento, ViewMenus.ObtemOpcoesEditarEvento());
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Nenhum evento encontrado com o id {idEvento}");
+                    }
                     break;
                 default:
                     Console.WriteLine("Opção digitada não é valida");
