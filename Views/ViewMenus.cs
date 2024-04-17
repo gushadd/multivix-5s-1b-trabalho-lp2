@@ -180,5 +180,14 @@ internal class ViewMenus
         Console.WriteLine("Informe o Id do evento");
         return Teclado.CapturaStringDigitada();
     }
+
+    public static int ObtemOpcoesMenuEditarEventos()
+    {
+        Console.WriteLine("Escolha uma opção no menu abaixo");
+        Console.WriteLine("1 - Editar Evento");
+        Console.WriteLine("2 - Editar Contato de Evento");
+        Console.WriteLine("0 - Sair do Menu de Edição");
+        return Teclado.CapturaInteiroDigitado();
+    }
 }
 
