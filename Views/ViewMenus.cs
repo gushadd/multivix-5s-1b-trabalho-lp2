@@ -181,7 +181,7 @@ internal class ViewMenus
         return Teclado.CapturaStringDigitada();
     }
 
-    public static int ObtemOpcoesMenuEditarEventos()
+    public static int ObtemOpcoesMenuEditarEvento()
     {
         Console.WriteLine("Escolha uma opção no menu abaixo");
         Console.WriteLine("1 - Editar Evento");
