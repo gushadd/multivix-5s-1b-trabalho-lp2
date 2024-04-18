@@ -1,5 +1,5 @@
 # 📖 Gerenciador de Eventos - Documentação
-Este é o trabalho de Linguagem de Programação 1, no 1º Bimestre do 5º Semestre, a qual foi ministrada pelo [Professor André Bessa](https://github.com/bessax).
+Este é o trabalho de Linguagem de Programação 2, no 1º Bimestre do 5º Semestre, a qual foi ministrada pelo [Professor André Bessa](https://github.com/bessax).
 
 ## Introdução
 O presente documento tem como objetivo documentar o funcionamento do sistema de gerenciamento de eventos, que foi construído como requisitado pelo Professor André Bessa. A documentação contém prints de todas as funções do sistema, junto com uma breve explicação de cada uma delas.
