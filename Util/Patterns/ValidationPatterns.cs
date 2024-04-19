@@ -2,6 +2,8 @@
 {
     internal class ValidationPatterns
     {
+        private ValidationPatterns() { }
+
         public const string MascaraDataBrasileira = "dd/MM/yyyy";
 
         public const string MascaraDataHoraMinutoBrasileiro = "dd/MM/yyyy HH:mm";
