@@ -81,3 +81,18 @@ Aqui, é mostrado um exemplo de um evento exportado em arquivo .txt.
 <p align="center">
   <img src="https://github.com/gPagio/multivix-5s-1b-trabalho-lp2/blob/main/Docs/Images/13.png" alt="imagem-13">
 </p>
+
+### Diagrama de Casos de Uso
+<p align="center">
+  <img src="https://github.com/gPagio/multivix-5s-1b-trabalho-lp2/blob/main/Docs/Images/14.jpg" alt="imagem-14">
+</p>
+
+### Diagrama de Classes
+<p align="center">
+  <img src="https://github.com/gPagio/multivix-5s-1b-trabalho-lp2/blob/main/Docs/Images/15.png" alt="imagem-15">
+</p>
+
+### Ferramentas Utilizadas
+- IDE Utilizada: Visual Studio 2022
+- Repositório de Código: Git e GitHub
+- UML: Draw.io
